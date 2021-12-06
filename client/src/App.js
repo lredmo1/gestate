@@ -9,26 +9,18 @@ function App() {
 
 const handleColorChangeGreen = (e) => {
   setContextColor("green")
-  console.log("you werk?")
-  console.log(contextColor)
 }
 
 const handleColorChangeYellow = (e) => {
   setContextColor("yellow")
-  console.log("you werk?")
-  console.log(contextColor)
 }
 
 const handleColorChangeRed = (e) => {
   setContextColor("red")
-  console.log("you werk?")
-  console.log(contextColor)
 }
 
 const handleColorChangeErase = (e) => {
   setContextColor("white")
-  console.log("you werk?")
-  console.log(contextColor)
 }
 
 const handleSmallLine = (e) => {

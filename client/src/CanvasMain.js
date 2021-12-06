@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-// 383,230,purple,10,1
 
-// 384,230,385,229,386,228,387,228,387,227,390,219,394,211,401,197,404,194,413,180,414,177,416,173,417,171,418,171,418,170,418,171,417,189,418,193,419,220,419,222,419,234,419,234,419,235,419,235,424,236,427,237,451,240,459,241,501,251,506,251,517,255,517,256,517,257,518,258,518,261,516,262,502,266,482,271,468,271,467,271,466,272,465,272,464,274,462,274,443,280,442,280,441,280,441,281,440,283,440,284,441,294,442,297,445,301,461,337,462,338,460,346,459,346,456,355,456,354,454,353,453,352,446,346,444,343,416,317,415,314,401,300,400,300,398,298,397,298,392,301,390,303,369,312,365,314,344,322,340,323,321,328,317,328,304,329,303,329,301,329,301,329,307,311,308,309,327,291,330,290,336,286,336,279,338,265,339,264,339,263,336,261,335,259,314,243,309,238,273,215,272,214,266,211,265,211,264,210,264,209,265,209,273,206,275,206,292,202,296,201,317,200,319,201,352,207,354,207,359,209,359,209,364,219,365,220,367,225,367,226,367,226,367,226,368,226,369,226,370,227,370,227,371,227,372,227,373,228,373,229,376,230,376,231,376,231,376,231
 function CanvasMain({currentColor, currentWidth}) {
 
   const canvasRef = useRef(null)
@@ -33,41 +31,29 @@ function CanvasMain({currentColor, currentWidth}) {
 
     const redraw = (drawingArray) => {
       let fullStrokeStart = drawingArray[0]
-      console.log(fullStrokeStart)
-      // let splitFullStrokeStart = fullStrokeStart.split(",")
       let fullStrokeMiddle = drawingArray[1]
-      const ctxRedraw = canvas.getContext("2d")
-      ctxRedraw.scale(2,2)
-      ctxRedraw.lineCap = "round"
-      // ctxRedraw.strokeStyle = splitFullStrokeStart[2]
-      // ctxRedraw.lineWidth = splitFullStrokeStart[3]
-      redrawContextRef.current = ctxRedraw;
     
       const startPathRedraw = (fullStrokeStart) => { 
         setIsDrawing(true)
-        console.log(redrawContextRef.current)
         let splitFullStrokeStart = fullStrokeStart.split(",")
-        redrawContextRef.current.strokeStyle = splitFullStrokeStart[2]
-        redrawContextRef.current.lineWidth = splitFullStrokeStart[3]
-        redrawContextRef.current.beginPath()
-        redrawContextRef.current.moveTo(parseInt(splitFullStrokeStart[0]), parseInt(splitFullStrokeStart[1]))
-        // setIsDrawing(true)
+        contextRef.current.strokeStyle = splitFullStrokeStart[2]
+        contextRef.current.lineWidth = splitFullStrokeStart[3]
+        contextRef.current.beginPath()
+        contextRef.current.moveTo(parseInt(splitFullStrokeStart[0]), parseInt(splitFullStrokeStart[1]))
+
       }
       
       const drawPathRedraw = (fullStrokeMiddle) => {
-        // if(!isDrawing){
-        //   return
-        // }
         let split = fullStrokeMiddle.split(",")
         for (let i = 0; i < split.length; i += 2) {
-          redrawContextRef.current.lineTo(parseInt(split[i]), parseInt(split[i + 1]))
+          contextRef.current.lineTo(parseInt(split[i]), parseInt(split[i + 1]))
          
         }    
-        redrawContextRef.current.stroke()  
+        contextRef.current.stroke()  
       }
     
       const finishPathRedraw = () => {
-        redrawContextRef.current.closePath()
+        contextRef.current.closePath()
         setIsDrawing(false)
       }
     
@@ -101,11 +87,7 @@ function CanvasMain({currentColor, currentWidth}) {
     const {offsetX, offsetY} = nativeEvent;
     contextRef.current.beginPath()
     contextRef.current.moveTo(offsetX, offsetY)
-    // console.log(`This comes first: ${offsetX},${offsetY}`)
-    // fullStrokeStart.push(offsetX, offsetY, contextColor.current, contextLineWidth.current, contextOpacity.current)
-    console.log(contextRef.current.lineWidth)
     setIsDrawing(true)
-    console.log(fullStrokeStart.join(","))
   }
   
   const drawPath = ({nativeEvent}) => {
@@ -114,7 +96,6 @@ function CanvasMain({currentColor, currentWidth}) {
     }
   const {offsetX, offsetY} = nativeEvent; 
   contextRef.current.lineTo(offsetX, offsetY)
-  // console.log(`This comes second: ${offsetX},${offsetY}`)
   fullStrokeDraw.push(offsetX, offsetY)
   contextRef.current.stroke()
   }
@@ -122,11 +103,8 @@ function CanvasMain({currentColor, currentWidth}) {
   const finishPath = ({nativeEvent}) => {
     contextRef.current.closePath()
     const {offsetX, offsetY} = nativeEvent; 
-    // console.log(`This comes third: ${offsetX},${offsetY}`)
     fullStrokeEnd.push(offsetX, offsetY)
     setIsDrawing(false)
-    console.log(fullStrokeDraw.join(","))
-    console.log(fullStrokeEnd.join(","))
   }
   
 
