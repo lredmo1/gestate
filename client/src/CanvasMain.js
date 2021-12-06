@@ -13,8 +13,20 @@ function CanvasMain({currentColor, currentWidth}) {
 
     
   const [isDrawing, setIsDrawing] = useState(false)
+  const [oldDrawing, setOldDrawing] = useState([])
 
   useEffect(()=>{
+
+    fetch("http://localhost:3000/strokes")
+    .then((response) => response.json())
+    .then((data) =>{
+      console.log(data)
+      setOldDrawing(data)
+      console.log(`this is in the fetch ${oldDrawing}`)
+
+    });
+
+
     const canvas = canvasRef.current
     canvas.style.backgroundColor = contextBackgroundcolor.current
     canvas.width = window.innerWidth * 2;
@@ -30,6 +42,7 @@ function CanvasMain({currentColor, currentWidth}) {
     contextRef.current = ctx;
 
     const redraw = (drawingArray) => {
+      console.log(`this is in redraw ${oldDrawing}`)
       let fullStrokeStart = drawingArray[0]
       let fullStrokeMiddle = drawingArray[1]
     
@@ -47,7 +60,7 @@ function CanvasMain({currentColor, currentWidth}) {
         let split = fullStrokeMiddle.split(",")
         for (let i = 0; i < split.length; i += 2) {
           contextRef.current.lineTo(parseInt(split[i]), parseInt(split[i + 1]))
-         
+          
         }    
         contextRef.current.stroke()  
       }
