@@ -17,13 +17,28 @@ function CanvasMain({currentColor, currentWidth}) {
 
   useEffect(()=>{
 
+    function waitingFunction() {
+      return fetch('http://localhost:3000/strokes')
+      .then((response)=>response.json())
+      .then((responseJson)=>{return responseJson});
+    }
+    
+
+    async function asyncCall() {
+      console.log('calling');
+      const result = await waitingFunction();
+      console.log("dog");
+      // expected output: "resolved"
+    }
+
+    asyncCall()
+
     fetch("http://localhost:3000/strokes")
     .then((response) => response.json())
     .then((data) =>{
       console.log(data)
       setOldDrawing(data)
       console.log(`this is in the fetch ${oldDrawing}`)
-
     });
 
 
