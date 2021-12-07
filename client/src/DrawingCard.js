@@ -1,6 +1,6 @@
 function DrawingCard() {
     return (
-    <h1>DrawingCard</h1>
+    <h1>Name</h1>
     )
 }
 

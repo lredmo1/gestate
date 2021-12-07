@@ -6,6 +6,7 @@ function Home() {
     <h1>Home</h1>
     <NavLink to="/login">Log In</NavLink>
     <NavLink to="/signup">Sign Up</NavLink>
+    <NavLink to="/canvas">Draw</NavLink>
     </>
     )
 }
