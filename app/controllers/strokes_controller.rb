@@ -5,4 +5,22 @@ class StrokesController < ApplicationController
     render json: strokes
   end 
 
+  def create
+    stroke = Stroke.create(eval(params[:arrayOfStrokes]))
+    render json: stroke,status:201
+  end
+
+  def destroy
+    stroke = Stroke.find(params[:id])
+    stroke.destroy
+    head :no_content
+  end
+ 
+  private
+
+  def stroke_params
+    params.require(:arrayOfStrokes).permit(:start_stroke,:line_path,:layer_id)
+  end
+
+
 end
