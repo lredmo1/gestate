@@ -6,6 +6,7 @@ function App() {
 
   const [contextColor, setContextColor] = useState("pink") 
   const [lineWidth, setLineWidth] = useState(5) 
+  const [superLongState, setSuperLongState] = useState([])
 
 const handleColorChangeGreen = (e) => {
   setContextColor("green")
@@ -55,14 +56,15 @@ let exampleDataZ = [test1,test2]
 
 
 const saveIt = (arrayOfStrokeData) => {
+  
+
  
   let exampleData = []
-  console.log(arrayOfStrokeData)
 
-  for(let i=0;i<arrayOfStrokeData.length;i++){
+  for(let i=0;i<arrayOfStrokeData.length;i+=2){
   let stroke = {
-    start_stroke: arrayOfStrokeData[i][0],
-    line_path: arrayOfStrokeData[i][1],
+    start_stroke: arrayOfStrokeData[i],
+    line_path: arrayOfStrokeData[i+1],
     layer_id: 1
   }
   exampleData.push(stroke)
@@ -74,7 +76,7 @@ fetch("http://localhost:3000/strokes",{
   body:JSON.stringify({arrayOfStrokes: JSON.stringify(exampleData)})})
   .then((r)=> r.json())
   .then((data)=> {console.log(data)})
-  
+
 
 window.location.reload() 
 }
@@ -83,7 +85,7 @@ window.location.reload()
 
   return (
     <>
-      <CanvasMain currentColor={contextColor} currentWidth={lineWidth}/>
+      <CanvasMain currentColor={contextColor} setSuperLongState = {setSuperLongState} superLongState ={superLongState} currentWidth={lineWidth}/>
       <button onClick ={handleColorChangeBlack}>Black</button>
       <button onClick={handleColorChangeGreen}>Green</button>
       <button onClick={handleColorChangeYellow}>Yellow</button>
@@ -94,7 +96,7 @@ window.location.reload()
       <button onClick={handleLargeLine}>Large</button>
       <button onClick={handleExtraLargeLine}>Extra Large</button>
       <button onClick={handleSuperLine}>Super</button>
-      <button onClick={(e)=>saveIt(exampleDataZ)}>Save</button>
+      <button onClick={(e)=>saveIt(superLongState)}>Save</button>
     </>
   );
 }

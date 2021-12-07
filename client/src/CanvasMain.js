@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-function CanvasMain({currentColor, currentWidth}) {
+function CanvasMain({currentColor, currentWidth, setSuperLongState, superLongState}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -11,7 +11,7 @@ function CanvasMain({currentColor, currentWidth}) {
   const contextBackgroundcolor = useRef("#d4fff6")
   const contextOpacity = useRef(1)
   const [counter,setcounter] =useState(0)
-  const [superLongState, setSuperLongState] = useState([])
+
 
     
   const [isDrawing, setIsDrawing] = useState(false)
@@ -103,7 +103,7 @@ function CanvasMain({currentColor, currentWidth}) {
     let StartStrokeSingleStroke = fullStrokeStart.join(",")
     StartStrokeFull.push(StartStrokeSingleStroke)
     // setSuperLongState((dog)=> dog + StartStrokeSingleStroke)
-    setSuperLongState((dog)=> [...dog, StartStrokeSingleStroke])
+    setSuperLongState((dog)=> [...dog,StartStrokeSingleStroke])
 
     //setSuperLongState => ({...SuperLongState, StartStrokeSingleStroke})) 
     // console.log(`this is fullStrokeStart ${fullStrokeStart}`)
@@ -112,10 +112,8 @@ function CanvasMain({currentColor, currentWidth}) {
     setIsDrawing(true)
 
     setcounter((count)=>count+=1)
-    console.log(`this is the count inside ${counter}`)
+ 
   }
-
-  console.log(superLongState)
 
   // console.log(`this is the outside one ${LinePathFull}`)
   
@@ -134,7 +132,6 @@ function CanvasMain({currentColor, currentWidth}) {
     const {offsetX, offsetY} = nativeEvent; 
     fullStrokeEnd.push(offsetX, offsetY)
     let linePathSingleStroke = fullStrokeDraw.join(",")
-    console.log(linePathSingleStroke.length)
     if(linePathSingleStroke.length === 0){
     setSuperLongState((dog)=> [...dog,`WOW`])}
     else{
@@ -147,7 +144,7 @@ function CanvasMain({currentColor, currentWidth}) {
     setIsDrawing(false)
   }
 
-  
+  console.log(superLongState)
 
   //633,485,#ff0000,5,1
 
