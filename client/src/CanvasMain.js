@@ -13,10 +13,15 @@ function CanvasMain({currentColor, currentWidth}) {
 
     
   const [isDrawing, setIsDrawing] = useState(false)
-  const [oldDrawing, setOldDrawing] = useState([])
-  const [awaitingDrawing, setAwaitingDrawing] = useState([])
+
 
   useEffect(()=>{
+
+    fetch("http://localhost:3000/strokes")
+      .then((r)=> r.json())
+      .then((data)=> {
+        redrawStrokes(data)
+      })
 
     const canvas = canvasRef.current
     canvas.style.backgroundColor = contextBackgroundcolor.current
@@ -45,14 +50,12 @@ function CanvasMain({currentColor, currentWidth}) {
         contextRef.current.lineWidth = splitFullStrokeStart[3]
         contextRef.current.beginPath()
         contextRef.current.moveTo(parseInt(splitFullStrokeStart[0]), parseInt(splitFullStrokeStart[1]))
-    
       }
       
       const drawPathRedraw = (fullStrokeMiddle) => {
         let split = fullStrokeMiddle.split(",")
         for (let i = 0; i < split.length; i += 2) {
           contextRef.current.lineTo(parseInt(split[i]), parseInt(split[i + 1]))
-          
         }    
         contextRef.current.stroke()  
       }
@@ -61,39 +64,24 @@ function CanvasMain({currentColor, currentWidth}) {
         contextRef.current.closePath()
         setIsDrawing(false)
       }
-    
       startPathRedraw(fullStrokeStart) 
       drawPathRedraw(fullStrokeMiddle)
       finishPathRedraw()
-    
     }
     
     const redrawStrokes = (arrayl) => {
       for (let i = 0; i < arrayl.length; i++) {
         redraw(arrayl[i])
-        console.log('did this fire')
       }
     }
-
-
-const reDrawAsync = async () => {
-  await fetch("http://localhost:3000/strokes")
-  .then((r)=> r.json())
-  .then((data)=> {
-    setAwaitingDrawing(data)
-    console.log(`this is th data ${data}`)
-    redrawStrokes(awaitingDrawing)
-  })
-}
-
-reDrawAsync() 
-
 
   },[])
 
   let fullStrokeStart = [] 
   let fullStrokeDraw = [] 
   let fullStrokeEnd = []
+  let fullDrawing = []
+
 
   const startPath = ({nativeEvent}) => {
     contextRef.current.strokeStyle = currentColor
@@ -101,6 +89,9 @@ reDrawAsync()
     const {offsetX, offsetY} = nativeEvent;
     contextRef.current.beginPath()
     contextRef.current.moveTo(offsetX, offsetY)
+    fullStrokeStart.push(offsetX, offsetY, contextRef.current.strokeStyle,  contextRef.current.lineWidth, contextRef.current.globalAlpha)
+    let startStrokeB = fullStrokeStart.join(",")
+    console.log(startStrokeB)
     setIsDrawing(true)
   }
   
@@ -115,9 +106,12 @@ reDrawAsync()
   }
 
   const finishPath = ({nativeEvent}) => {
+    console.log(fullStrokeDraw.join(","))
     contextRef.current.closePath()
     const {offsetX, offsetY} = nativeEvent; 
-    fullStrokeEnd.push(offsetX, offsetY)
+    // fullStrokeEnd.push(offsetX, offsetY)
+    // fullDrawing.push([startStrokeB,fullStrokeDraw])
+    console.log(fullDrawing)
     setIsDrawing(false)
   }
   
