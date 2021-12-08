@@ -1,13 +1,17 @@
+
 import CanvasMain from "./CanvasMain";
 import { useState } from "react";
 import CanvasControls from "./CanvasControls";
 import LayersControls from "./LayersControls";
+import CanvasGenerator from "./CanvasGenerator"
 
 function CanvasContainer() {
-  const [currentColor, setCurrentColor] = useState("pink");
+  const [currentColor, setCurrentColor] = useState("black");
   const [currentWidth, setCurrentWidth] = useState(5);
   const [superLongState, setSuperLongState] = useState([]);
+  const [eraseState,setEraseState] = useState(false)
   // const [layers, setLayers] = useState([]);
+
 
   const handleColorChangeGreen = (e) => {
     setCurrentColor("green");
@@ -49,14 +53,26 @@ function CanvasContainer() {
     setCurrentWidth(100);
   };
 
-  const saveIt = (arrayOfStrokeData) => {
-    let exampleData = [];
 
-    for (let i = 0; i < arrayOfStrokeData.length; i += 2) {
-      let stroke = {
-        start_stroke: arrayOfStrokeData[i],
-        line_path: arrayOfStrokeData[i + 1],
-        layer_id: 1,
+  const handleSuperErase = (e) => {
+    setEraseState(true)
+  }
+
+  const handleSetIsDrawing = (e) => {
+    setEraseState(false)
+  }
+ 
+
+  
+  const saveIt = (arrayOfStrokeData) => {
+   
+    let exampleData = []
+  
+    for(let i=0;i<arrayOfStrokeData.length;i+=2){
+    let stroke = {
+      start_stroke: arrayOfStrokeData[i],
+      line_path: arrayOfStrokeData[i+1],
+      layer_id: 1
       };
       exampleData.push(stroke);
     }
@@ -86,6 +102,8 @@ function CanvasContainer() {
     <>
       <CanvasControls />
       //move buttons to controls
+      <button onClick ={handleSuperErase}>ERASE!</button>
+      <button onClick ={handleSetIsDrawing}>Draw Again</button>
       <button onClick={handleColorChangeBlack}>Black</button>
       <button onClick={handleColorChangeGreen}>Green</button>
       <button onClick={handleColorChangeYellow}>Yellow</button>
@@ -96,17 +114,10 @@ function CanvasContainer() {
       <button onClick={handleLargeLine}>Large</button>
       <button onClick={handleExtraLargeLine}>Extra Large</button>
       <button onClick={handleSuperLine}>Super</button>
-      <button onClick={(e) => saveIt(superLongState)}>Save</button>
+      <button onClick={(e)=>saveIt(superLongState)}>Save</button>
       <LayersControls />
-      <CanvasMain
-        currentColor={currentColor}
-        currentWidth={currentWidth}
-        setSuperLongState={setSuperLongState}
-        superLongState={superLongState}
-      />
-      ;
-    </>
-  );
+    <CanvasGenerator setEraseState ={setEraseState} eraseState ={eraseState} currentColor={currentColor} currentWidth={currentWidth} setSuperLongState={setSuperLongState} superLongState={superLongState}/>;
+  </>)
 }
 
 export default CanvasContainer;
