@@ -1,44 +1,47 @@
 import { useState } from "react";
-import Error from "./Error"
+import Error from "./Error";
 
-function UserSettings({onLogin}) {
-    const [userFullName, setUserFullName] = useState("");
-    const [userEmail, setUserEmail] = useState("");
-    const [profPicUrl, setUPofPicUrl] = useState("");
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [passwordConfirmation, setPasswordConfirmation] = useState("");
-    const [errors, setErrors] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+function UserSettings({ onLogin }) {
+  const [userFullName, setUserFullName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [profPicUrl, setUPofPicUrl] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [errors, setErrors] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-    
-    function handleSubmit(e) {
-        e.preventDefault();
-        setIsLoading(true);
-        fetch("/signup", {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username,
-            password,
-            password_confirmation: passwordConfirmation,
-          }),
-        }).then((resp) => {
-          setIsLoading(false);
-          if (resp.ok) {
-            resp.json().then((user) => onLogin(user));
-          } else {
-            resp.json().then((data) => setErrors(data.errors));
-          }
-        });
+  function handleSubmit(e) {
+    e.preventDefault();
+    setIsLoading(true);
+    fetch("/signup", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+        password_confirmation: passwordConfirmation,
+      }),
+    }).then((resp) => {
+      setIsLoading(false);
+      if (resp.ok) {
+        resp.json().then((user) => onLogin(user));
+      } else {
+        resp.json().then((data) => setErrors(data.errors));
       }
+    });
+  }
 
-    return (
-<form>
+  return (
+    <div id="settings-container">
+      <h1 className="title">Edit User Info</h1>
+      <div className="form">
+      <form>
+      <div className="input">
         <label>
-          Full Name:
+          Full Name:{" "}
           <input
             type="text"
             className="user-full-name"
@@ -46,9 +49,10 @@ function UserSettings({onLogin}) {
             value={userFullName}
             onChange={(e) => setUsername(e.target.value)}
           ></input>
-        </label>
+        </label></div>
+        <div className="input">
         <label>
-          Email:
+          Email:{" "}
           <input
             type="text"
             className="user-email"
@@ -56,7 +60,8 @@ function UserSettings({onLogin}) {
             value={userEmail}
             onChange={(e) => setUsername(e.target.value)}
           ></input>
-        </label>
+        </label></div>
+        <div className="input">
         <label>
           Profile Picture:{" "}
           <input
@@ -66,9 +71,10 @@ function UserSettings({onLogin}) {
             value={profPicUrl}
             onChange={(e) => setUsername(e.target.value)}
           ></input>
-        </label>
+        </label></div>
+        <div className="input">
         <label>
-          Username:
+          Username:{" "}
           <input
             type="text"
             className="username"
@@ -76,9 +82,10 @@ function UserSettings({onLogin}) {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           ></input>
-        </label>
+        </label></div>
+        <div className="input">
         <label>
-          Password:
+          Password:{" "}
           <input
             type="password"
             className="password"
@@ -86,9 +93,10 @@ function UserSettings({onLogin}) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></input>
-        </label>
+        </label></div>
+        <div className="input">
         <label>
-          Password Confirmation:
+          Password Confirmation:{" "}
           <input
             type="password"
             className="password-confirmation"
@@ -96,13 +104,12 @@ function UserSettings({onLogin}) {
             value={passwordConfirmation}
             onChange={(e) => setPasswordConfirmation(e.target.value)}
           ></input>
-        </label>
-        <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
-        {errors.map((err) => (
-          <Error key={err}>{err}</Error>
-        ))}
-      </form>
-    )
+        </label></div>
+        <div className="button-submit">
+        <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button></div>
+      </form></div>
+    </div>
+  );
 }
 
-export default UserSettings
+export default UserSettings;

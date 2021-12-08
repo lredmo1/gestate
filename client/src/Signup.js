@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Error from "./Error"
+
 
 function Signup({ onLogin }) {
   const [userFullName, setUserFullName] = useState("");
@@ -36,10 +36,13 @@ function Signup({ onLogin }) {
 
   return (
     <>
-      <h1>Sign Up</h1>
+    <div id="signup-container">
+      <h1 className="title">Sign Up</h1>
+      <div className="form">
       <form>
+      <div className="input">
         <label>
-          Full Name:
+          Full Name:{" "}
           <input
             type="text"
             className="user-full-name"
@@ -47,9 +50,10 @@ function Signup({ onLogin }) {
             value={userFullName}
             onChange={(e) => setUsername(e.target.value)}
           ></input>
-        </label>
+        </label></div>
+        <div className="input">
         <label>
-          Email:
+          Email:{" "}
           <input
             type="text"
             className="user-email"
@@ -57,7 +61,8 @@ function Signup({ onLogin }) {
             value={userEmail}
             onChange={(e) => setUsername(e.target.value)}
           ></input>
-        </label>
+        </label></div>
+        <div className="input">
         <label>
           Profile Picture:{" "}
           <input
@@ -67,9 +72,10 @@ function Signup({ onLogin }) {
             value={profPicUrl}
             onChange={(e) => setUsername(e.target.value)}
           ></input>
-        </label>
+        </label></div>
+        <div className="input">
         <label>
-          Username:
+          Username:{" "}
           <input
             type="text"
             className="username"
@@ -77,9 +83,10 @@ function Signup({ onLogin }) {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           ></input>
-        </label>
+        </label></div>
+        <div className="input">
         <label>
-          Password:
+          Password:{" "}
           <input
             type="password"
             className="password"
@@ -87,7 +94,8 @@ function Signup({ onLogin }) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></input>
-        </label>
+        </label></div>
+        <div className="input">
         <label>
           Password Confirmation:
           <input
@@ -97,12 +105,11 @@ function Signup({ onLogin }) {
             value={passwordConfirmation}
             onChange={(e) => setPasswordConfirmation(e.target.value)}
           ></input>
-        </label>
-        <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
-        {errors.map((err) => (
-          <Error key={err}>{err}</Error>
-        ))}
-      </form>
+        </label></div>
+        <div className="button-submit">
+        <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button></div>
+      </form></div>
+      </div>
     </>
   );
 }

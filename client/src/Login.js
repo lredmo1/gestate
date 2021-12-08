@@ -28,33 +28,43 @@ function Login({ onLogin }) {
   };
 
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username:{" "}
-          <input
-            type="text"
-            className="username"
-            autoComplete="off"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          ></input>
-        </label>
-        <label>
-          Password:{" "}
-          <input
-            type="password"
-            className="password"
-            autoComplete="current-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          ></input>
-        </label>
-        <button type="submit">{isLoading ? "Loading..." : "Log In"}</button>
-      </form>
-      <NavLink to="/artist_page">Artist Page</NavLink>
-    </>
+    <div id="login-container">
+      <h1 className="title">Log In</h1>
+      <div className="form">
+        <form onSubmit={handleSubmit}>
+          <div className="input">
+            <label>
+              Username:{" "}
+              <input
+                type="text"
+                className="username"
+                autoComplete="off"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              ></input>
+            </label>
+          </div>
+          <div className="input">
+            <label>
+              Password:{" "}
+              <input
+                type="password"
+                className="password"
+                autoComplete="current-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              ></input>
+            </label>
+          </div>
+          <div className="button-submit">
+            <button type="submit">{isLoading ? "Loading..." : "Log In"}</button>
+          </div>
+        </form>
+      </div>
+      <div id="temporary-link">
+        <NavLink to="/artist_page">Artist Page</NavLink>
+      </div>
+    </div>
   );
 }
 
