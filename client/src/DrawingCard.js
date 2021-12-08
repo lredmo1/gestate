@@ -1,6 +1,13 @@
-function DrawingCard() {
+function DrawingCard({drawing}) {
+    const handleClick = () => {
+        console.log('hello')
+    }
+
     return (
-    <h1>Name</h1>
+    <div onclick = {handleClick}>
+    <h1>{drawing.name}</h1>
+    <h1>Color</h1>
+    </div>
     )
 }
 

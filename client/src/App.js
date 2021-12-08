@@ -8,6 +8,7 @@ import Signup from "./Signup";
 import CanvasContainer from "./CanvasContainer";
 import UserSettings from "./UserSettings";
 import ArtistPage from "./ArtistPage";
+import Login from "./Login";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -20,34 +21,33 @@ function App() {
     });
   }, []);
 
-
-
+  if(user){
+    return (<ArtistPage setUser={setUser} user={user}/>)
+  }
 
   return (
     <>
       {/* {user ? <ArtistPage /> : <Login onLogin={setUser} />} */}
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/home">
           <Home />
         </Route>
-        <Route exact path="/login">
+        <Route exact path="/dashboard">
           <LoginContainer onLogin={setUser} user={user}/>
         </Route>
         <Route exact path="/signup">
           <Signup onLogin={setUser} />
         </Route>
-        <Route exact path="/canvas">
+        {/* <Route exact path="/canvas">
           <CanvasContainer />
         </Route>
-        <Route exact path="/artist_page">
-          <ArtistPage onLogout={setUser} user={user}/>
-        </Route>
+      
         <Route exact path="/settings">
           <UserSettings />
         </Route>
         <Route exact path="/drawing">
           <CanvasContainer />
-        </Route>
+        </Route> */}
       </Switch>
     </>
   );

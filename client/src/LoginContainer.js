@@ -5,7 +5,7 @@ import ArtistPage from "./ArtistPage";
 function LoginContainer({onLogin, user}) {
     return (
         <>
-        {user ? <ArtistPage user={user}/> : <Login onLogin={onLogin} />}
+        {user ? "" : <Login onLogin={onLogin} />}
         </>
     )
 }

@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function Login({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  let history = useHistory();
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,7 +24,10 @@ function Login({ onLogin }) {
       }),
     }).then((resp) => {
       if (resp.ok) {
-        resp.json().then((user) => onLogin(user));
+        resp.json().then((user) =>{
+          onLogin(user)
+          history.push("/dashboard")
+        });
       } else {
         resp.json().then((data) => setErrors(data.errors));
       }
@@ -62,7 +69,7 @@ function Login({ onLogin }) {
         </form>
       </div>
       <div id="temporary-link">
-        <NavLink to="/artist_page">Artist Page</NavLink>
+        <NavLink to="/home">Home</NavLink>
       </div>
     </div>
   );
