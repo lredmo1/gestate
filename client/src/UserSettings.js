@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Error from "./Error";
 
 function UserSettings({ onLogin, user }) {
   const [userFullName, setUserFullName] = useState("");
@@ -119,6 +118,7 @@ function UserSettings({ onLogin, user }) {
         <div className="button-submit">
         <button type="submit">{isLoading ? "Loading..." : "Update"}</button></div>
       </form></div>
+      {errors.length > 0 && errors.map((error)=> <p>{error}</p>)}
     </div>
   );
 }

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
   skip_before_action :authorize, only: :create
 
   def index
@@ -28,22 +29,8 @@ class UsersController < ApplicationController
     params.permit(:name, :email, :prof_pic_url, :username, :password, :password_confirmation)
   end
 
-#   def create 
-#     user = User.create(user_params)
-#     if user.valid?
-#         render json: user, status: :created 
-#     else 
-#         render json: user.errors.full_messages, status: :unprocessable_entity 
-#     end 
-# end
+  def render_not_found_response
+    render json: {error: error.message}, status: :not_found
+  end
 
-#     def show
-#         user = User.find_by(id: session[:user_id])
-#         if user
-#           render json: user
-#         else
-#           render json: { error: "Not authorized" }, status: :unauthorized
-#         end
-#       end
-    
 end
