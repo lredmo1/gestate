@@ -1,43 +1,61 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
-function Login({onLogin}) {
+function Login({ onLogin }) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [errors, setErrors] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    }).then((resp) => {
+      if (resp.ok) {
+        resp.json().then((user) => onLogin(user));
+      } else {
+        resp.json().then((data) => setErrors(data.errors));
+      }
+    });
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        fetch("/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username,
-            password,
-          }),
-        }).then((resp) => {
-          if (resp.ok) {
-            resp.json().then((user) => onLogin(user));
-          } else {
-            resp.json().then((data) => setErrors(data.errors));
-          }
-        });
-    }
-
-
-    return (
+  return (
     <>
-    <h1>Log In</h1>
-    <form onSubmit={handleSubmit}>
-        <label>Username: <input type="text" id="username" autoComplete="off" value={username} onChange={(e) => setUsername(e.target.value)}></input></label>
-        <label>Password: <input type="password" id="password" autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)}></input></label>
+      <h1>Log In</h1>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Username:{" "}
+          <input
+            type="text"
+            className="username"
+            autoComplete="off"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          ></input>
+        </label>
+        <label>
+          Password:{" "}
+          <input
+            type="password"
+            className="password"
+            autoComplete="current-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          ></input>
+        </label>
         <button type="submit">{isLoading ? "Loading..." : "Log In"}</button>
-    </form>
+      </form>
+      <NavLink to="/artist_page">Artist Page</NavLink>
     </>
-    )
+  );
 }
 
-export default Login
+export default Login;

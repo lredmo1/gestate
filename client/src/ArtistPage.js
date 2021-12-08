@@ -1,17 +1,25 @@
+import { NavLink } from 'react-router-dom'
+
 function ArtistPage() {
-  const [drawings, setDrawings] = useState([]);
 
-  useEffect(() => {
-    fetch("http://localhost:3000/drawings")
-      .then((resp) => resp.json())
-      .then(data => setDrawings(data));
-  }, []);
+    function handleLogoutClick() {
+        fetch("/logout", {
+          method: "DELETE",
+        }).then((resp) => {
+          if (resp.ok) {
+            onLogout(null);
+          }
+        });
+      }
 
-  drawingCard = drawings.map((drawing) => <DrawingCard drawing={drawing}/>);
   return (
     <>
       <h1>ArtistPage</h1>
-      {drawingCard}
+      <NavLink to="/settings">Edit Settings</NavLink>
+      //how to render icons here
+      <NavLink to="/drawing">view/edit existing drawing</NavLink>
+      <NavLink to="/canvas">create new drawing</NavLink>
+      <button onClick={handleLogoutClick}>Log Out</button>
     </>
   );
 }
