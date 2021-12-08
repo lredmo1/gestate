@@ -1,24 +1,34 @@
 import { useEffect, useRef, useState } from 'react'
 
-function CanvasMain({currentColor, currentWidth, setSuperLongState, superLongState}) {
+function CanvasMain({inform, eraseState, setEraseState, currentColor, currentWidth, setSuperLongState, superLongState}) {
 
   const canvasRef = useRef(null)
+  const canvasRef2 = useRef(null)
   const contextRef = useRef(null)
   const redrawContextRef = useRef(null)
   const contextColor = useRef("purple")
   const contextLineWidth = useRef(10)
   const contextLineCap = useRef("round")
   const contextBackgroundcolor = useRef("#d4fff6")
+  const contextBackgroundcolor2 = useRef("#d4fff6")
   const contextOpacity = useRef(1)
+  
 
   const [counter,setcounter] =useState(0)
   const [isDrawing, setIsDrawing] = useState(false)
+  const [mouseX, setMouseX] = useState(0)
+  const [mouseY, setMouseY] = useState(0)
+  const [isActuallyErasing,setIsActuallyErasing] = useState(false)
 
   let fullStrokeStart = [] 
   let fullStrokeDraw = [] 
   let fullStrokeEnd = []
   let StartStrokeFull = []
   let LinePathFull = []
+
+  let canvasInformation = inform.split(",")
+
+  
 
   useEffect(()=>{
 
@@ -28,12 +38,20 @@ function CanvasMain({currentColor, currentWidth, setSuperLongState, superLongSta
         redrawStrokes(data)
       })
 
+      //backgroundColor,width,height,style.width,style.height,position,left,top,[z-index]
+
     const canvas = canvasRef.current
-    canvas.style.backgroundColor = contextBackgroundcolor.current
+    canvas.style.backgroundColor = canvasInformation[0]
     canvas.width = window.innerWidth * 2;
     canvas.height = window.innerHeight * 2;
     canvas.style.width = `${window.innerWidth}px`
     canvas.style.height = `${window.innerHeight}px`
+    // canvas.style.position = `absolute`
+    // canvas.style.left = 0
+    // canvas.style.top = 10
+    canvas.style['z-index'] = canvasInformation[1]
+
+  
 
     const ctx = canvas.getContext("2d")
     ctx.scale(2,2)
@@ -46,6 +64,16 @@ function CanvasMain({currentColor, currentWidth, setSuperLongState, superLongSta
 
       let fullStrokeStart = drawingArray.start_stroke
       let fullStrokeMiddle = drawingArray.line_path
+
+      if (fullStrokeStart === 'erase'){
+        const eraseReDraw = (fullStrokeMiddle) => {
+          let split = fullStrokeMiddle.split(",")
+          for (let i = 0; i < split.length; i += 4) {
+            contextRef.current.clearRect(parseInt(split[i]), parseInt(split[i + 1]), parseInt(split[i+2]), parseInt(split[i + 3]))
+          }      
+        }
+        eraseReDraw(fullStrokeMiddle)
+      } else {
     
       const startPathRedraw = (fullStrokeStart) => { 
         setIsDrawing(true)
@@ -54,7 +82,6 @@ function CanvasMain({currentColor, currentWidth, setSuperLongState, superLongSta
         contextRef.current.lineWidth = splitFullStrokeStart[3]
         contextRef.current.beginPath()
         contextRef.current.moveTo(parseInt(splitFullStrokeStart[0]), parseInt(splitFullStrokeStart[1]))
-      
       }
       
       const drawPathRedraw = (fullStrokeMiddle) => {
@@ -72,7 +99,7 @@ function CanvasMain({currentColor, currentWidth, setSuperLongState, superLongSta
       startPathRedraw(fullStrokeStart) 
       drawPathRedraw(fullStrokeMiddle)
       finishPathRedraw()
-    }
+    }}
     
     const redrawStrokes = (arrayl) => {
       for (let i = 0; i < arrayl.length; i++) {
@@ -82,11 +109,11 @@ function CanvasMain({currentColor, currentWidth, setSuperLongState, superLongSta
 
   },[])
 
-
   const startPath = ({nativeEvent}) => {
+    const {offsetX, offsetY} = nativeEvent;
+    if(eraseState === false){
     contextRef.current.strokeStyle = currentColor
     contextRef.current.lineWidth = currentWidth
-    const {offsetX, offsetY} = nativeEvent;
     contextRef.current.beginPath()
     contextRef.current.moveTo(offsetX, offsetY)
     fullStrokeStart.push(offsetX, offsetY, contextRef.current.strokeStyle,  contextRef.current.lineWidth, contextRef.current.globalAlpha)
@@ -94,21 +121,32 @@ function CanvasMain({currentColor, currentWidth, setSuperLongState, superLongSta
     StartStrokeFull.push(StartStrokeSingleStroke)
     setSuperLongState((dog)=> [...dog,StartStrokeSingleStroke])
     setIsDrawing(true)
-    setcounter((count)=>count+=1)
- 
+    setcounter((count)=>count+=1)}
+    else {
+      setIsActuallyErasing(true)
+      setSuperLongState((dog)=> [...dog,"erase"])
+    }
   }
   
+
   const drawPath = ({nativeEvent}) => {
+    const {offsetX, offsetY} = nativeEvent;
+    if(eraseState === false){
     if(!isDrawing){
       return
     }
-  const {offsetX, offsetY} = nativeEvent; 
-  contextRef.current.lineTo(offsetX, offsetY)
-  fullStrokeDraw.push(offsetX, offsetY)
-  contextRef.current.stroke()
-  }
+    contextRef.current.lineTo(offsetX, offsetY)
+    fullStrokeDraw.push(offsetX, offsetY)
+    contextRef.current.stroke()
+  }else if (isActuallyErasing === true){
+    contextRef.current.clearRect(offsetX, offsetY, 100, 100);
+    fullStrokeDraw.push(offsetX, offsetY, 100, 100)
+  } else {
+    
+  }}
 
   const finishPath = ({nativeEvent}) => {
+    if(eraseState === false){
     contextRef.current.closePath()
     const {offsetX, offsetY} = nativeEvent; 
     fullStrokeEnd.push(offsetX, offsetY)
@@ -119,19 +157,32 @@ function CanvasMain({currentColor, currentWidth, setSuperLongState, superLongSta
       setSuperLongState((dog)=> [...dog,linePathSingleStroke])
     }
     LinePathFull.push(linePathSingleStroke)
-  
     setIsDrawing(false)
+  }else{
+    let linePathSingleStroke = fullStrokeDraw.join(",")
+    setSuperLongState((dog)=> [...dog,linePathSingleStroke])
+    setIsActuallyErasing(false)
+  }}
+
+
+  const handleSuperErase = (e) => {
+    setEraseState(true)
+  }
+
+  const handleSetIsDrawing = (e) => {
+    setEraseState(false)
   }
 
   return (
+    <>
   <canvas
     onMouseDown = {startPath}
     onMouseUp = {finishPath}
     onMouseMove = {drawPath}
     ref = {canvasRef}
     className = "canvasMain"
-
     />
+    </>
   );
 }
 

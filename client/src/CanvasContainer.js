@@ -1,10 +1,11 @@
-import CanvasMain from "./CanvasMain"
+import CanvasGenerator from "./CanvasGenerator"
 import { useState } from "react"
 
 function CanvasContainer() {
   const [currentColor, setCurrentColor] = useState("pink") 
   const [currentWidth, setCurrentWidth] = useState(5) 
   const [superLongState, setSuperLongState] = useState([])
+  const [eraseState,setEraseState] = useState(false)
 
   const handleColorChangeGreen = (e) => {
     setCurrentColor("green")
@@ -26,6 +27,8 @@ function CanvasContainer() {
   const handleColorChangeErase = (e) => {
     setCurrentColor("white")
   }
+
+
   
   const handleSmallLine = (e) => {
     setCurrentWidth(1)
@@ -47,10 +50,17 @@ function CanvasContainer() {
     setCurrentWidth(100)
   }
 
+  const handleSuperErase = (e) => {
+    setEraseState(true)
+  }
+
+  const handleSetIsDrawing = (e) => {
+    setEraseState(false)
+  }
+ 
+
   
   const saveIt = (arrayOfStrokeData) => {
-    
-  
    
     let exampleData = []
   
@@ -78,6 +88,8 @@ function CanvasContainer() {
 
   return (
   <>
+      <button onClick ={handleSuperErase}>ERASE!</button>
+      <button onClick ={handleSetIsDrawing}>Draw Again</button>
       <button onClick ={handleColorChangeBlack}>Black</button>
       <button onClick={handleColorChangeGreen}>Green</button>
       <button onClick={handleColorChangeYellow}>Yellow</button>
@@ -89,7 +101,7 @@ function CanvasContainer() {
       <button onClick={handleExtraLargeLine}>Extra Large</button>
       <button onClick={handleSuperLine}>Super</button>
       <button onClick={(e)=>saveIt(superLongState)}>Save</button>
-    <CanvasMain currentColor={currentColor} currentWidth={currentWidth} setSuperLongState={setSuperLongState} superLongState={superLongState}/>;
+    <CanvasGenerator setEraseState ={setEraseState} eraseState ={eraseState} currentColor={currentColor} currentWidth={currentWidth} setSuperLongState={setSuperLongState} superLongState={superLongState}/>;
   </>)
 }
 
