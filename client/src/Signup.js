@@ -4,7 +4,7 @@ import React, { useState } from "react";
 function Signup({ onLogin }) {
   const [userFullName, setUserFullName] = useState("");
   const [userEmail, setUserEmail] = useState("");
-  const [profPicUrl, setUPofPicUrl] = useState("");
+  const [profPicUrl, setProfPicUrl] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -20,6 +20,9 @@ function Signup({ onLogin }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        name: userFullName,
+        email: userEmail,
+        prof_pic_url: profPicUrl,
         username,
         password,
         password_confirmation: passwordConfirmation,
@@ -39,7 +42,7 @@ function Signup({ onLogin }) {
     <div id="signup-container">
       <h1 className="title">Sign Up</h1>
       <div className="form">
-      <form>
+      <form onSubmit={handleSubmit}>
       <div className="input">
         <label>
           Full Name:{" "}
@@ -48,7 +51,7 @@ function Signup({ onLogin }) {
             className="user-full-name"
             autoComplete="off"
             value={userFullName}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setUserFullName(e.target.value)}
           ></input>
         </label></div>
         <div className="input">
@@ -59,7 +62,7 @@ function Signup({ onLogin }) {
             className="user-email"
             autoComplete="off"
             value={userEmail}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setUserEmail(e.target.value)}
           ></input>
         </label></div>
         <div className="input">
@@ -70,7 +73,7 @@ function Signup({ onLogin }) {
             className="prof-pic-url"
             autoComplete="off"
             value={profPicUrl}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setProfPicUrl(e.target.value)}
           ></input>
         </label></div>
         <div className="input">
@@ -109,6 +112,7 @@ function Signup({ onLogin }) {
         <div className="button-submit">
         <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button></div>
       </form></div>
+      {errors.length > 0 && errors.map((error)=> <p>{error}</p>)}
       </div>
     </>
   );

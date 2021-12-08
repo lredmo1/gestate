@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Error from "./Error";
 
-function UserSettings({ onLogin }) {
+function UserSettings({ onLogin, user }) {
   const [userFullName, setUserFullName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [profPicUrl, setUPofPicUrl] = useState("");
@@ -10,6 +10,16 @@ function UserSettings({ onLogin }) {
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (user) { 
+    setUserFullName(user.name)
+    setUserEmail(user.email)
+    setUPofPicUrl(user.prof_pic_url)
+    setUsername(user.username)
+    }
+  }, [user]);
+
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -20,9 +30,10 @@ function UserSettings({ onLogin }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username,
-        password,
-        password_confirmation: passwordConfirmation,
+        name: userFullName,
+        email: userEmail,
+        prof_pic_url: profPicUrl,
+        username
       }),
     }).then((resp) => {
       setIsLoading(false);
@@ -38,7 +49,7 @@ function UserSettings({ onLogin }) {
     <div id="settings-container">
       <h1 className="title">Edit User Info</h1>
       <div className="form">
-      <form>
+      <form onSubmit={handleSubmit}>
       <div className="input">
         <label>
           Full Name:{" "}
@@ -47,7 +58,7 @@ function UserSettings({ onLogin }) {
             className="user-full-name"
             autoComplete="off"
             value={userFullName}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setUserFullName(e.target.value)}
           ></input>
         </label></div>
         <div className="input">
@@ -83,7 +94,7 @@ function UserSettings({ onLogin }) {
             onChange={(e) => setUsername(e.target.value)}
           ></input>
         </label></div>
-        <div className="input">
+        {/* <div className="input">
         <label>
           Password:{" "}
           <input
@@ -104,9 +115,9 @@ function UserSettings({ onLogin }) {
             value={passwordConfirmation}
             onChange={(e) => setPasswordConfirmation(e.target.value)}
           ></input>
-        </label></div>
+        </label></div> */}
         <div className="button-submit">
-        <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button></div>
+        <button type="submit">{isLoading ? "Loading..." : "Update"}</button></div>
       </form></div>
     </div>
   );
