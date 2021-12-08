@@ -3,7 +3,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import CanvasMain from "./CanvasMain";
 import Home from "./Home";
-import Login from "./Login";
+import LoginContainer from "./LoginContainer";
 import Signup from "./Signup";
 import CanvasContainer from "./CanvasContainer";
 import UserSettings from "./UserSettings";
@@ -20,16 +20,18 @@ function App() {
     });
   }, []);
 
-  // if (!user) return <Login onLogin={setUser} />;
+
+
 
   return (
     <>
+      {/* {user ? <ArtistPage /> : <Login onLogin={setUser} />} */}
       <Switch>
         <Route exact path="/">
           <Home />
         </Route>
         <Route exact path="/login">
-          <Login onLogin={setUser} />
+          <LoginContainer onLogin={setUser} user={user}/>
         </Route>
         <Route exact path="/signup">
           <Signup onLogin={setUser} />
@@ -38,7 +40,7 @@ function App() {
           <CanvasContainer />
         </Route>
         <Route exact path="/artist_page">
-          <ArtistPage onLogout={setUser}/>
+          <ArtistPage onLogout={setUser} user={user}/>
         </Route>
         <Route exact path="/settings">
           <UserSettings />
