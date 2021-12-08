@@ -33,7 +33,7 @@ function App() {
           <Home />
         </Route>
         <Route exact path="/dashboard">
-          <LoginContainer onLogin={setUser} user={user}/>
+          <LoginContainer onLogout={setUser} onLogin={setUser} user={user}/>
         </Route>
         <Route exact path="/signup">
           <Signup onLogin={setUser} />
@@ -43,7 +43,7 @@ function App() {
         </Route>
       
         <Route exact path="/settings">
-          <UserSettings />
+          <UserSettings user={user}/>
         </Route>
         <Route exact path="/drawing">
           <CanvasContainer />
