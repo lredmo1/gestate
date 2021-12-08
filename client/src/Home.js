@@ -6,7 +6,7 @@ function Home() {
       <h1>App Title Here</h1>
       <ul className="home-links">
         <li className="home-links">
-          <NavLink to="/login">Log In</NavLink>
+          <NavLink to="/dashboard">Log In</NavLink>
         </li>
         <li className="home-links">
           <NavLink to="/signup">Sign Up</NavLink>
