@@ -2,7 +2,7 @@ class StrokesController < ApplicationController
 
   def index 
     strokes = Stroke.all
-    render json: strokes
+    render json: strokes, status: :ok
   end 
 
   def create
