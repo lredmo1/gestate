@@ -13,14 +13,14 @@ function ArtistPage({onLogout}) {
       }
 
   return (
-    <>
-      <h1>ArtistPage</h1>
-      <NavLink to="/settings">Edit Settings</NavLink>
-      //how to render icons here
-      <NavLink to="/drawing">view/edit existing drawing</NavLink>
-      <NavLink to="/canvas">create new drawing</NavLink>
-      <button onClick={handleLogout}>Log Out</button>
-    </>
+    <div id="artist-page-container">
+      <h1 className="title">ArtistPage</h1>
+      <div className="artist-div"><NavLink to="/settings">Edit Settings</NavLink></div>
+      <div className="artist-div">//how to render icons here</div>
+      <div className="artist-div"><NavLink to="/drawing">view/edit existing drawing</NavLink></div>
+      <div className="artist-div"><NavLink to="/canvas">create new drawing</NavLink></div>
+      <div className="artist-div"><button onClick={handleLogout}>Log Out</button></div>
+    </div>
   );
 }
 
