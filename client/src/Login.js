@@ -68,7 +68,7 @@ function Login({ onLogin }) {
           </div>
         </form>
       </div>
-      {errors.length > 0 && errors.map((error)=> <p>{error}</p>)}
+      {/* {errors.length > 0 && errors.map((error)=> <p>{error}</p>)} */}
       <div id="temporary-link">
         <NavLink to="/home">Home</NavLink>
       </div>

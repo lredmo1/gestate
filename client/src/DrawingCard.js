@@ -1,10 +1,11 @@
-function DrawingCard({drawing}) {
-    const handleClick = () => {
-        console.log('hello')
+function DrawingCard({drawing, user, setDrawing, setCanvasView}) {
+    const handleClick = (e) => {
+        setCanvasView(true)
+        setDrawing(drawing.id)
     }
 
     return (
-    <div onclick = {handleClick}>
+    <div onClick = {handleClick}>
     <h1>{drawing.name}</h1>
     <h1>Color</h1>
     </div>

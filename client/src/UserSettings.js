@@ -118,7 +118,7 @@ function UserSettings({ onLogin, user }) {
         <div className="button-submit">
         <button type="submit">{isLoading ? "Loading..." : "Update"}</button></div>
       </form></div>
-      {errors.length > 0 && errors.map((error)=> <p>{error}</p>)}
+      {/* {errors.length > 0 && errors.map((error)=> <p>{error}</p>)} */}
     </div>
   );
 }

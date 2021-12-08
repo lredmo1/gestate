@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import CanvasContainer from './CanvasContainer';
 import DrawingContainer from './DrawingContainer';
 
-function ArtistPage({setUser}) {
+function ArtistPage({setUser, user}) {
 
     function handleLogout() {
         fetch("/logout", {
@@ -21,7 +21,7 @@ function ArtistPage({setUser}) {
           <CanvasContainer />
         </Route>
       <h1 className="title">ArtistPage</h1>
-      <div className="artist-div">//how to render icons here</div>
+      <DrawingContainer user={user}/>
       <div className="artist-div"><NavLink to="/dashboard/canvas">create new drawing</NavLink></div>
       <div className="artist-div"><button onClick={handleLogout}>Log Out</button></div>
     </div>
