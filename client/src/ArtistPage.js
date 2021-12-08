@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom'
 
-function ArtistPage() {
+function ArtistPage({onLogout}) {
 
-    function handleLogoutClick() {
+    function handleLogout() {
         fetch("/logout", {
           method: "DELETE",
         }).then((resp) => {
@@ -19,7 +19,7 @@ function ArtistPage() {
       //how to render icons here
       <NavLink to="/drawing">view/edit existing drawing</NavLink>
       <NavLink to="/canvas">create new drawing</NavLink>
-      <button onClick={handleLogoutClick}>Log Out</button>
+      <button onClick={handleLogout}>Log Out</button>
     </>
   );
 }

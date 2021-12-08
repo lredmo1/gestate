@@ -1,4 +1,7 @@
-function UserSettings() {
+import { useState } from "react";
+import Error from "./Error"
+
+function UserSettings({onLogin}) {
     const [userFullName, setUserFullName] = useState("");
     const [userEmail, setUserEmail] = useState("");
     const [profPicUrl, setUPofPicUrl] = useState("");
