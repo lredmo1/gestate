@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 function UserSettings({ onLogin, user }) {
   const [userFullName, setUserFullName] = useState("");
   const [userEmail, setUserEmail] = useState("");
-  const [profPicUrl, setUPofPicUrl] = useState("");
+  const [profPicUrl, setProfPicUrl] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -14,7 +14,7 @@ function UserSettings({ onLogin, user }) {
     if (user) { 
     setUserFullName(user.name)
     setUserEmail(user.email)
-    setUPofPicUrl(user.prof_pic_url)
+    setProfPicUrl(user.prof_pic_url)
     setUsername(user.username)
     }
   }, [user]);
@@ -23,7 +23,7 @@ function UserSettings({ onLogin, user }) {
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
-    fetch("/signup", {
+    fetch("/edit", {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -40,6 +40,7 @@ function UserSettings({ onLogin, user }) {
         resp.json().then((user) => onLogin(user));
       } else {
         resp.json().then((data) => setErrors(data.errors));
+        console.log(errors)
       }
     });
   }
@@ -68,7 +69,7 @@ function UserSettings({ onLogin, user }) {
             className="user-email"
             autoComplete="off"
             value={userEmail}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setUserEmail(e.target.value)}
           ></input>
         </label></div>
         <div className="input">
@@ -79,7 +80,7 @@ function UserSettings({ onLogin, user }) {
             className="prof-pic-url"
             autoComplete="off"
             value={profPicUrl}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setProfPicUrl(e.target.value)}
           ></input>
         </label></div>
         <div className="input">
@@ -96,7 +97,7 @@ function UserSettings({ onLogin, user }) {
         <div className="button-submit">
         <button type="submit">{isLoading ? "Loading..." : "Update"}</button></div>
       </form></div>
-      {/* {errors.length > 0 && errors.map((error)=> <p>{error}</p>)} */}
+      {/* <div className="error-wrapper">{errors.length > 0 && errors.map((error)=> <p>{error}</p>)}</div> */}
     </div>
   );
 }
