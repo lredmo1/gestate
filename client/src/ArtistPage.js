@@ -24,6 +24,7 @@ function ArtistPage({setUser, user}) {
       <DrawingContainer user={user}/>
       <div className="artist-div"><NavLink to="/dashboard/canvas">create new drawing</NavLink></div>
       <div className="artist-div"><button onClick={handleLogout}>Log Out</button></div>
+      <div className="artist-div"><NavLink to="/settings">Edit Profile</NavLink></div>
     </div>
   );
 }

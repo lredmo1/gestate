@@ -21,8 +21,8 @@ function App() {
     });
   }, []);
 
-  if(user){
-    return (<ArtistPage setUser={setUser} user={user}/>)
+  if (user) {
+    return <ArtistPage setUser={setUser} user={user} />;
   }
 
   return (
@@ -33,10 +33,13 @@ function App() {
           <Home />
         </Route>
         <Route exact path="/dashboard">
-          <LoginContainer onLogout={setUser} onLogin={setUser} user={user}/>
+          <LoginContainer onLogout={setUser} onLogin={setUser} user={user} />
         </Route>
         <Route exact path="/signup">
           <Signup onLogin={setUser} />
+        </Route>
+        <Route exact path="/settings">
+          <UserSettings user={user} />
         </Route>
         {/* <Route exact path="/canvas">
           <CanvasContainer />

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-  skip_before_action :authorize, only: [:create, :index]
+  skip_before_action :authorize, only: [:create, :index, :show, :update]
 
   def index
     users = User.all
@@ -18,8 +18,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = find(params[:id])
-    user.update(user_params)
+    user = User.find(params[:id])
+    user.update(:name, :email, :prof_pic_url, :username)
     render json: user, status: :ok
   end
 
