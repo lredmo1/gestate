@@ -19,7 +19,7 @@ class StrokesController < ApplicationController
   private
 
   def stroke_params
-    params.require(:arrayOfStrokes).permit(:start_stroke,:line_path,:layer_id)
+    params.require(:arrayOfStrokes).permit(:start_stroke,:line_path,:layer_id,:drawing_id)
   end
 
 

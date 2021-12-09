@@ -27,7 +27,7 @@ function CanvasMain({informationreDraw, drawingZ, inform, eraseState, setEraseSt
   let LinePathFull = []
 
   let canvasInformation = inform.split(",")
- 
+
   
 
   useEffect(()=>{
@@ -120,7 +120,7 @@ function CanvasMain({informationreDraw, drawingZ, inform, eraseState, setEraseSt
     contextRef.current.lineWidth = currentWidth
     contextRef.current.beginPath()
     contextRef.current.moveTo(offsetX, offsetY)
-    fullStrokeStart.push(offsetX, offsetY, contextRef.current.strokeStyle,  contextRef.current.lineWidth, contextRef.current.globalAlpha)
+    fullStrokeStart.push(offsetX, offsetY, contextRef.current.strokeStyle,  contextRef.current.lineWidth, contextRef.current.globalAlpha,drawingZ,canvasInformation[2])
     let StartStrokeSingleStroke = fullStrokeStart.join(",")
     StartStrokeFull.push(StartStrokeSingleStroke)
     setSuperLongState((dog)=> [...dog,StartStrokeSingleStroke])
