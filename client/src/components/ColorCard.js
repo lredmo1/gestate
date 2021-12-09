@@ -1,8 +1,9 @@
 function ColorCard({color, setCurrentColor}) {
 
-    function test() {
+    function test(e) {
         console.log("hello")
-        setCurrentColor(color)
+        setCurrentColor(`#${color}`)
+        console.log(typeof(color))
     }
 
     return (

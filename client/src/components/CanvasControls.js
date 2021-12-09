@@ -67,6 +67,7 @@ function CanvasControls({setCurrentColor, setCurrentWidth, setSuperLongState, se
         <EraserSelection setCurrentWidth={setCurrentWidth} setEraseState={setEraseState}/>
         <ColorSelection setCurrentColor={setCurrentColor}/>
       <button className = "buttonInControls" onClick={(e)=>saveIt(superLongState)}>Save</button>
+      {/* <div id="toolbar-detail"></div> */}
       {/* <button className = "buttonInControls" onClick={handleColorChangeBlack}>Black</button>
       <button className = "buttonInControls" onClick={handleColorChangeGreen}>Green</button>
       <button className = "buttonInControls" onClick={handleColorChangeYellow}>Yellow</button>
