@@ -23,6 +23,14 @@ code {
   margin: 8px 0;
 }
 
+.canvasMain {
+  cursor: crosshair;
+}
+
+.color-card {
+  height: 50px;
+  width: 50px;
+}
 
 /* .alert {
   background-color: white;

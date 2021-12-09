@@ -143,8 +143,8 @@ function CanvasMain({informationreDraw, drawingZ, inform, eraseState, setEraseSt
     fullStrokeDraw.push(offsetX, offsetY)
     contextRef.current.stroke()
   }else if (isActuallyErasing === true){
-    contextRef.current.clearRect(offsetX, offsetY, 100, 100);
-    fullStrokeDraw.push(offsetX, offsetY, 100, 100)
+    contextRef.current.clearRect(offsetX, offsetY, currentWidth, currentWidth);
+    fullStrokeDraw.push(offsetX, offsetY, currentWidth, currentWidth)
   } else {
     
   }}

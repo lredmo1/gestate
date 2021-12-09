@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
+import ToolBarDetail from "./ToolBarDetail"
+import { NavLink } from 'react-router-dom'
+
 
 function CanvasControls({setCurrentColor, setCurrentWidth, setSuperLongState, setEraseState, superLongState}) {
+
+    const [toolbarDetailUnambiguous, setToolbarDetailUnambiguous] = useState("")
 
     const handleColorChangeGreen = (e) => {
     setCurrentColor("green");
@@ -22,33 +27,10 @@ function CanvasControls({setCurrentColor, setCurrentWidth, setSuperLongState, se
     setCurrentColor("white");
     };
 
-    const handleSmallLine = (e) => {
-    setCurrentWidth(1);
-    };
 
-    const handleMediumLine = (e) => {
-    setCurrentWidth(5);
-    };
 
-    const handleLargeLine = (e) => {
-    setCurrentWidth(10);
-    };
 
-    const handleExtraLargeLine = (e) => {
-    setCurrentWidth(20);
-    };
 
-    const handleSuperLine = (e) => {
-    setCurrentWidth(100);
-    };
-
-    const handleSuperErase = (e) => {
-    setEraseState(true)
-    }
-
-    const handleSetIsDrawing = (e) => {
-    setEraseState(false)
-    }
 
     const saveIt = (arrayOfStrokeData) => {
 
@@ -80,22 +62,40 @@ function CanvasControls({setCurrentColor, setCurrentWidth, setSuperLongState, se
         );
     }
 
+    const handleColorChoice = () => {
+        setToolbarDetailUnambiguous("color-wheel")
+        setEraseState(false)
+        console.log(toolbarDetailUnambiguous)
+    }
+
+    const handleLineChoice = () => {
+        setToolbarDetailUnambiguous("line")
+        setEraseState(false)
+        console.log(toolbarDetailUnambiguous)
+    }
+
+    const handleEraseChoice = () => {
+        setToolbarDetailUnambiguous("erase")
+        setEraseState(true)
+        console.log(toolbarDetailUnambiguous)
+    }
 
     return (
         <>
+        <NavLink to="/dashboard">Back to Dashboard</NavLink>
+        <button id="color-wheel-button" onClick={handleColorChoice}>Choose Color</button> 
+        <button id="draw-button" onClick={handleLineChoice}>Draw</button> 
+        <button id="erase-button"  onClick={handleEraseChoice}>Erase</button> 
+        {/* <LineSelection setCurrentWidth={setCurrentWidth} setEraseState={setEraseState} onclick={handleLineChoice}/>
+        <EraserSelection setCurrentWidth={setCurrentWidth} setEraseState={setEraseState}/>
+        <ColorSelection setCurrentColor={setCurrentColor}/> */}
       <button className = "buttonInControls" onClick={(e)=>saveIt(superLongState)}>Save</button>
-      <button className = "buttonInControls" onClick ={handleSuperErase}>ERASE!</button>
-      <button className = "buttonInControls" onClick ={handleSetIsDrawing}>Draw Again</button>
-      <button className = "buttonInControls" onClick={handleColorChangeBlack}>Black</button>
+      {toolbarDetailUnambiguous ? <ToolBarDetail toolbarDetailUnambiguous={toolbarDetailUnambiguous} setCurrentColor={setCurrentColor} setEraseState={setEraseState} setCurrentWidth={setCurrentWidth} setToolbarDetailUnambiguous={setToolbarDetailUnambiguous}/> : null}
+      {/* <button className = "buttonInControls" onClick={handleColorChangeBlack}>Black</button>
       <button className = "buttonInControls" onClick={handleColorChangeGreen}>Green</button>
       <button className = "buttonInControls" onClick={handleColorChangeYellow}>Yellow</button>
       <button className = "buttonInControls" onClick={handleColorChangeRed}>Red</button>
-      <button className = "buttonInControls" onClick={handleColorChangeErase}>Erase</button>
-      <button className = "buttonInControls" onClick={handleSmallLine}>Small</button>
-      <button className = "buttonInControls" onClick={handleMediumLine}>Medium</button>
-      <button className = "buttonInControls" onClick={handleLargeLine}>Large</button>
-      <button className = "buttonInControls" onClick={handleExtraLargeLine}>Extra Large</button>
-      <button className = "buttonInControls" onClick={handleSuperLine}>Super</button>
+      <button className = "buttonInControls" onClick={handleColorChangeErase}>Erase</button> */}
       </>
     )
 }
