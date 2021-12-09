@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :strokes
   resources :layers 
   resources :drawings do 
-    resources :layers
+    resources :layers, only: [:show]
   end 
   resources :users
   # Routing logic: fallback requests for React Router.

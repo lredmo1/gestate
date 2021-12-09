@@ -32,11 +32,7 @@ function CanvasMain({informationreDraw, drawingZ, inform, eraseState, setEraseSt
 
   useEffect(()=>{
 
-  fetch(`http://localhost:3000/drawings/${drawingZ}`)
-      .then((r)=> r.json())
-      .then((drawing)=> drawing.layers.forEach((layer)=>redrawStrokes(layer.strokes)))
-
-
+ 
 
       //backgroundColor,width,height,style.width,style.height,position,left,top,[z-index]
 
@@ -103,9 +99,16 @@ function CanvasMain({informationreDraw, drawingZ, inform, eraseState, setEraseSt
     
     const redrawStrokes = (arrayl) => {
       for (let i = 0; i < arrayl.length; i++) {
-        console.log(arrayl)  
+
+        redraw(arrayl[i])  
       }
     }
+
+    fetch(`http://localhost:3000/drawings/${drawingZ}/layers/${canvasInformation[2]}`)
+    .then((r)=> r.json())
+    .then((layer)=>redrawStrokes(layer.strokes))
+
+
 
 
   },[])
