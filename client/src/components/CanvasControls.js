@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+import LineSelection from "./LineSelection"
+import EraserSelection from "./EraserSelection"
+import ColorSelection from "./ColorSelection"
 
 function CanvasControls({setCurrentColor, setCurrentWidth, setSuperLongState, setEraseState, superLongState}) {
 
@@ -22,33 +25,10 @@ function CanvasControls({setCurrentColor, setCurrentWidth, setSuperLongState, se
     setCurrentColor("white");
     };
 
-    const handleSmallLine = (e) => {
-    setCurrentWidth(1);
-    };
 
-    const handleMediumLine = (e) => {
-    setCurrentWidth(5);
-    };
 
-    const handleLargeLine = (e) => {
-    setCurrentWidth(10);
-    };
 
-    const handleExtraLargeLine = (e) => {
-    setCurrentWidth(20);
-    };
 
-    const handleSuperLine = (e) => {
-    setCurrentWidth(100);
-    };
-
-    const handleSuperErase = (e) => {
-    setEraseState(true)
-    }
-
-    const handleSetIsDrawing = (e) => {
-    setEraseState(false)
-    }
 
     const saveIt = (arrayOfStrokeData) => {
 
@@ -83,19 +63,15 @@ function CanvasControls({setCurrentColor, setCurrentWidth, setSuperLongState, se
 
     return (
         <>
+        <LineSelection setCurrentWidth={setCurrentWidth} setEraseState={setEraseState}/>
+        <EraserSelection setCurrentWidth={setCurrentWidth} setEraseState={setEraseState}/>
+        <ColorSelection setCurrentColor={setCurrentColor}/>
       <button className = "buttonInControls" onClick={(e)=>saveIt(superLongState)}>Save</button>
-      <button className = "buttonInControls" onClick ={handleSuperErase}>ERASE!</button>
-      <button className = "buttonInControls" onClick ={handleSetIsDrawing}>Draw Again</button>
-      <button className = "buttonInControls" onClick={handleColorChangeBlack}>Black</button>
+      {/* <button className = "buttonInControls" onClick={handleColorChangeBlack}>Black</button>
       <button className = "buttonInControls" onClick={handleColorChangeGreen}>Green</button>
       <button className = "buttonInControls" onClick={handleColorChangeYellow}>Yellow</button>
       <button className = "buttonInControls" onClick={handleColorChangeRed}>Red</button>
-      <button className = "buttonInControls" onClick={handleColorChangeErase}>Erase</button>
-      <button className = "buttonInControls" onClick={handleSmallLine}>Small</button>
-      <button className = "buttonInControls" onClick={handleMediumLine}>Medium</button>
-      <button className = "buttonInControls" onClick={handleLargeLine}>Large</button>
-      <button className = "buttonInControls" onClick={handleExtraLargeLine}>Extra Large</button>
-      <button className = "buttonInControls" onClick={handleSuperLine}>Super</button>
+      <button className = "buttonInControls" onClick={handleColorChangeErase}>Erase</button> */}
       </>
     )
 }

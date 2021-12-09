@@ -112,7 +112,7 @@ function Signup({ onLogin }) {
         <div className="button-submit">
         <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button></div>
       </form></div>
-      <div className="error-wrapper">{errors.length > 0 && errors.map((error)=> <p>{error}</p>)}</div>
+      // <div className="error-wrapper">{errors.length > 0 && errors.map((error)=> <p>{error}</p>)}</div>
       </div>
     </>
   );

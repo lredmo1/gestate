@@ -1,4 +1,4 @@
-function LayersControls() {
+function LayerSelection() {
     return (
     <h1>LayersControls</h1>
     )
