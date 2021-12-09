@@ -78,8 +78,6 @@ function CanvasControls({setCurrentColor, setCurrentWidth, setSuperLongState, se
         .then(
             (data) => {console.log(data);}
         );
-
-        window.location.reload();
     }
 
 
