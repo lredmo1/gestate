@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-function CanvasMain({inform, eraseState, setEraseState, currentColor, currentWidth, setSuperLongState, superLongState}) {
+function CanvasMain({informationreDraw, drawingZ, inform, eraseState, setEraseState, currentColor, currentWidth, setSuperLongState, superLongState}) {
 
   const canvasRef = useRef(null)
   const canvasRef2 = useRef(null)
@@ -27,16 +27,16 @@ function CanvasMain({inform, eraseState, setEraseState, currentColor, currentWid
   let LinePathFull = []
 
   let canvasInformation = inform.split(",")
-
+ 
   
 
   useEffect(()=>{
 
-    fetch("http://localhost:3000/strokes")
+  fetch(`http://localhost:3000/drawings/${drawingZ}`)
       .then((r)=> r.json())
-      .then((data)=> {
-        redrawStrokes(data)
-      })
+      .then((drawing)=> drawing.layers.forEach((layer)=>redrawStrokes(layer.strokes)))
+
+
 
       //backgroundColor,width,height,style.width,style.height,position,left,top,[z-index]
 
@@ -103,9 +103,10 @@ function CanvasMain({inform, eraseState, setEraseState, currentColor, currentWid
     
     const redrawStrokes = (arrayl) => {
       for (let i = 0; i < arrayl.length; i++) {
-        redraw(arrayl[i])
+        console.log(arrayl)  
       }
     }
+
 
   },[])
 
