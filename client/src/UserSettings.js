@@ -93,28 +93,6 @@ function UserSettings({ onLogin, user }) {
             onChange={(e) => setUsername(e.target.value)}
           ></input>
         </label></div>
-        {/* <div className="input">
-        <label>
-          Password:{" "}
-          <input
-            type="password"
-            className="password"
-            autoComplete="current-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          ></input>
-        </label></div>
-        <div className="input">
-        <label>
-          Password Confirmation:{" "}
-          <input
-            type="password"
-            className="password-confirmation"
-            autoComplete="current-password"
-            value={passwordConfirmation}
-            onChange={(e) => setPasswordConfirmation(e.target.value)}
-          ></input>
-        </label></div> */}
         <div className="button-submit">
         <button type="submit">{isLoading ? "Loading..." : "Update"}</button></div>
       </form></div>
