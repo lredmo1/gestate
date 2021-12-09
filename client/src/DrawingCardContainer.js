@@ -1,6 +1,7 @@
 import DrawingCard from "./DrawingCard"
 
 function DrawingCardContainer({user, setDrawing, setCanvasView}) {
+  console.log(user)
   let drawingCards = user.drawings.map((drawing) => (
     <DrawingCard
       key={drawing.id}
@@ -12,7 +13,7 @@ function DrawingCardContainer({user, setDrawing, setCanvasView}) {
   ));
   return (
       <>
-      { drawingCards }
+      {drawingCards}
       </>
       );
 }

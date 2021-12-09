@@ -4,7 +4,7 @@ import DrawingCardContainer from "./DrawingCardContainer";
 import { useState, useEffect } from "react";
 
 function DrawingContainer({ user }) {
-  const [drawing, setDrawing] = useState("");
+  const [drawingZ, setDrawing] = useState("");
   const [canvasView, setCanvasView] = useState(false);
 
   let example = ["Mona Lisa", "Totoro"];
@@ -13,7 +13,7 @@ function DrawingContainer({ user }) {
 
   return (
     <>
-      {canvasView ? <CanvasContainer /> : <DrawingCardContainer user={user} setDrawing={setDrawing} setCanvasView={setCanvasView}/>}
+      {canvasView ? <CanvasContainer drawingZ = {drawingZ} user ={user} /> : <DrawingCardContainer user={user} setDrawing={setDrawing} setCanvasView={setCanvasView}/>}
     </>
   );
 }

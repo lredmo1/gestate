@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-function CanvasMain({inform, eraseState, setEraseState, currentColor, currentWidth, setSuperLongState, superLongState}) {
+function CanvasMain({informationreDraw, drawingZ, inform, eraseState, setEraseState, currentColor, currentWidth, setSuperLongState, superLongState}) {
 
   const canvasRef = useRef(null)
   const canvasRef2 = useRef(null)
@@ -32,11 +32,7 @@ function CanvasMain({inform, eraseState, setEraseState, currentColor, currentWid
 
   useEffect(()=>{
 
-    fetch("http://localhost:3000/strokes")
-      .then((r)=> r.json())
-      .then((data)=> {
-        redrawStrokes(data)
-      })
+ 
 
       //backgroundColor,width,height,style.width,style.height,position,left,top,[z-index]
 
@@ -103,9 +99,17 @@ function CanvasMain({inform, eraseState, setEraseState, currentColor, currentWid
     
     const redrawStrokes = (arrayl) => {
       for (let i = 0; i < arrayl.length; i++) {
-        redraw(arrayl[i])
+
+        redraw(arrayl[i])  
       }
     }
+
+    fetch(`http://localhost:3000/drawings/${drawingZ}/layers/${canvasInformation[2]}`)
+    .then((r)=> r.json())
+    .then((layer)=>redrawStrokes(layer.strokes))
+
+
+
 
   },[])
 
@@ -116,7 +120,7 @@ function CanvasMain({inform, eraseState, setEraseState, currentColor, currentWid
     contextRef.current.lineWidth = currentWidth
     contextRef.current.beginPath()
     contextRef.current.moveTo(offsetX, offsetY)
-    fullStrokeStart.push(offsetX, offsetY, contextRef.current.strokeStyle,  contextRef.current.lineWidth, contextRef.current.globalAlpha)
+    fullStrokeStart.push(offsetX, offsetY, contextRef.current.strokeStyle,  contextRef.current.lineWidth, contextRef.current.globalAlpha,drawingZ,canvasInformation[2])
     let StartStrokeSingleStroke = fullStrokeStart.join(",")
     StartStrokeFull.push(StartStrokeSingleStroke)
     setSuperLongState((dog)=> [...dog,StartStrokeSingleStroke])

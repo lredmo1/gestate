@@ -5,7 +5,7 @@ import CanvasControls from "./CanvasControls";
 import LayersControls from "./LayersControls";
 import CanvasGenerator from "./CanvasGenerator"
 
-function CanvasContainer() {
+function CanvasContainer({user, drawingZ}) {
   const [currentColor, setCurrentColor] = useState("black");
   const [currentWidth, setCurrentWidth] = useState(5);
   const [superLongState, setSuperLongState] = useState([]);
@@ -15,7 +15,7 @@ function CanvasContainer() {
   return (
     <>
     <CanvasControls superLongState = {superLongState} eraseState = {eraseState} setEraseState = {setEraseState} setCurrentColor = {setCurrentColor} setCurrentWidth = {setCurrentWidth} setSuperLongState = {setSuperLongState} setEraseState = {setEraseState}/>
-    <CanvasGenerator setEraseState ={setEraseState} eraseState ={eraseState} currentColor={currentColor} currentWidth={currentWidth} setSuperLongState={setSuperLongState} superLongState={superLongState}/>;
+    <CanvasGenerator user ={user} drawingZ = {drawingZ} setEraseState ={setEraseState} eraseState ={eraseState} currentColor={currentColor} currentWidth={currentWidth} setSuperLongState={setSuperLongState} superLongState={superLongState}/>;
   </>)
 }
 

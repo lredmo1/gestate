@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   
   resources :strokes
-  resources :layers
-  resources :drawings
+  resources :layers 
+  resources :drawings do 
+    resources :layers, only: [:show]
+  end 
   resources :users
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

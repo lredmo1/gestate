@@ -54,11 +54,14 @@ function CanvasControls({setCurrentColor, setCurrentWidth, setSuperLongState, se
 
         let exampleData = []
         for(let i=0;i<arrayOfStrokeData.length;i+=2){
+        let split = arrayOfStrokeData[i].split(",")
         let stroke = {
         start_stroke: arrayOfStrokeData[i],
         line_path: arrayOfStrokeData[i+1],
-        layer_id: 1
+        drawing_id:split[5],
+        layer_id:split[6]
         };
+
         exampleData.push(stroke);
         }
     
@@ -75,7 +78,7 @@ function CanvasControls({setCurrentColor, setCurrentWidth, setSuperLongState, se
         .then(
             (data) => {console.log(data);}
         );
-        window.location.reload();}
+    }
 
 
     return (
