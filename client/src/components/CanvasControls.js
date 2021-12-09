@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
-import LineSelection from "./LineSelection"
-import EraserSelection from "./EraserSelection"
-import ColorSelection from "./ColorSelection"
+import ToolBarDetail from "./ToolBarDetail"
+import { NavLink } from 'react-router-dom'
+
 
 function CanvasControls({setCurrentColor, setCurrentWidth, setSuperLongState, setEraseState, superLongState}) {
+
+    const [toolbarDetailUnambiguous, setToolbarDetailUnambiguous] = useState("")
 
     const handleColorChangeGreen = (e) => {
     setCurrentColor("green");
@@ -60,14 +62,35 @@ function CanvasControls({setCurrentColor, setCurrentWidth, setSuperLongState, se
         );
     }
 
+    const handleColorChoice = () => {
+        setToolbarDetailUnambiguous("color-wheel")
+        setEraseState(false)
+        console.log(toolbarDetailUnambiguous)
+    }
+
+    const handleLineChoice = () => {
+        setToolbarDetailUnambiguous("line")
+        setEraseState(false)
+        console.log(toolbarDetailUnambiguous)
+    }
+
+    const handleEraseChoice = () => {
+        setToolbarDetailUnambiguous("erase")
+        setEraseState(true)
+        console.log(toolbarDetailUnambiguous)
+    }
 
     return (
         <>
-        <LineSelection setCurrentWidth={setCurrentWidth} setEraseState={setEraseState}/>
+        <NavLink to="/dashboard">Back to Dashboard</NavLink>
+        <button id="color-wheel-button" onClick={handleColorChoice}>Choose Color</button> 
+        <button id="draw-button" onClick={handleLineChoice}>Draw</button> 
+        <button id="erase-button"  onClick={handleEraseChoice}>Erase</button> 
+        {/* <LineSelection setCurrentWidth={setCurrentWidth} setEraseState={setEraseState} onclick={handleLineChoice}/>
         <EraserSelection setCurrentWidth={setCurrentWidth} setEraseState={setEraseState}/>
-        <ColorSelection setCurrentColor={setCurrentColor}/>
+        <ColorSelection setCurrentColor={setCurrentColor}/> */}
       <button className = "buttonInControls" onClick={(e)=>saveIt(superLongState)}>Save</button>
-      {/* <div id="toolbar-detail"></div> */}
+      {toolbarDetailUnambiguous ? <ToolBarDetail toolbarDetailUnambiguous={toolbarDetailUnambiguous} setCurrentColor={setCurrentColor} setEraseState={setEraseState} setCurrentWidth={setCurrentWidth} setToolbarDetailUnambiguous={setToolbarDetailUnambiguous}/> : null}
       {/* <button className = "buttonInControls" onClick={handleColorChangeBlack}>Black</button>
       <button className = "buttonInControls" onClick={handleColorChangeGreen}>Green</button>
       <button className = "buttonInControls" onClick={handleColorChangeYellow}>Yellow</button>

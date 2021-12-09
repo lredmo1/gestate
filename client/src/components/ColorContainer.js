@@ -1,4 +1,4 @@
-function ColorContainer() {
+function ColorContainer({setToolbarDetailUnambiguous}) {
     return (
     <h1>ColorContainer</h1>
     )

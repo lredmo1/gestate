@@ -1,23 +1,28 @@
-function SizeSelection({setCurrentWidth}) {
+function SizeSelection({setCurrentWidth, setToolbarDetailUnambiguous}) {
 
     const handleSmallLine = (e) => {
         setCurrentWidth(1);
+        setToolbarDetailUnambiguous(false);
     };
     
     const handleMediumLine = (e) => {
         setCurrentWidth(5);
+        setToolbarDetailUnambiguous(false);
     };
     
     const handleLargeLine = (e) => {
         setCurrentWidth(20);
+        setToolbarDetailUnambiguous(false);
     };
     
     const handleExtraLargeLine = (e) => {
         setCurrentWidth(60);
+        setToolbarDetailUnambiguous(false);
     };
     
     const handleSuperLine = (e) => {
         setCurrentWidth(100);
+        setToolbarDetailUnambiguous(false);
     };
 
     return (

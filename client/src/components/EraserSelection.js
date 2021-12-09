@@ -1,18 +1,13 @@
 import SizeSelection from "./SizeSelection"
 
 
-function LineSelection({setCurrentWidth, setEraseState}) {
-    const handleSuperErase = (e) => {
-        setEraseState(true)
-        }
+function EraserSelection({setCurrentWidth, setToolbarDetailUnambiguous}) {
+
 
     return (
-    <>
-    <button className = "buttonInControls" onClick ={handleSuperErase}>ERASE!</button>
-    <SizeSelection setCurrentWidth={setCurrentWidth}/>
-    </>
+    <SizeSelection setCurrentWidth={setCurrentWidth} setToolbarDetailUnambiguous={setToolbarDetailUnambiguous}/>
     )
 }
 
-export default LineSelection
+export default EraserSelection
 

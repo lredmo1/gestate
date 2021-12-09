@@ -1,16 +1,10 @@
 import SizeSelection from "./SizeSelection"
 
 
-function LineSelection({setCurrentWidth, setEraseState}) {
-    const handleSetIsDrawing = (e) => {
-        setEraseState(false)
-        }
+function LineSelection({setCurrentWidth, setToolbarDetailUnambiguous}) {
 
     return (
-    <>
-    <button className = "buttonInControls" onClick ={handleSetIsDrawing}>Draw Again</button>
-    <SizeSelection setCurrentWidth={setCurrentWidth}/>
-    </>
+    <SizeSelection setCurrentWidth={setCurrentWidth} setToolbarDetailUnambiguous={setToolbarDetailUnambiguous}/>
     )
 }
 

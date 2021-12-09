@@ -1,9 +1,8 @@
-function ColorCard({color, setCurrentColor}) {
+function ColorCard({color, setCurrentColor, setToolbarDetailUnambiguous}) {
 
     function test(e) {
-        console.log("hello")
         setCurrentColor(`#${color}`)
-        console.log(typeof(color))
+        setToolbarDetailUnambiguous(false)
     }
 
     return (
