@@ -104,7 +104,7 @@ function CanvasMain({informationreDraw, drawingZ, inform, eraseState, setEraseSt
       }
     }
 
-    fetch(`http://localhost:3000/drawings/${drawingZ}/layers/${canvasInformation[2]}`)
+    fetch(`/drawings/${drawingZ}/layers/${canvasInformation[2]}`)
     .then((r)=> r.json())
     .then((layer)=>redrawStrokes(layer.strokes))
 

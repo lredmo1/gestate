@@ -3,7 +3,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import CanvasMain from "./CanvasMain";
 import Home from "./Home";
-import LoginContainer from "./LoginContainer";
+import LoggedInDashboard from "./LoggedInDashboard";
 import Signup from "./Signup";
 import CanvasContainer from "./CanvasContainer";
 import UserSettings from "./UserSettings";
@@ -22,7 +22,7 @@ function App() {
   }, []);
 
   if (user) {
-    return <ArtistPage setUser={setUser} user={user} />;
+    return <ArtistPage onLogin={setUser} user={user} />;
   }
 
   return (
@@ -33,14 +33,12 @@ function App() {
           <Home />
         </Route>
         <Route exact path="/dashboard">
-          <LoginContainer onLogout={setUser} onLogin={setUser} user={user} />
+          <LoggedInDashboard onLogout={setUser} onLogin={setUser} user={user} />
         </Route>
         <Route exact path="/signup">
           <Signup onLogin={setUser} />
         </Route>
-        <Route exact path="/settings">
-          <UserSettings user={user} />
-        </Route>
+
         {/* <Route exact path="/canvas">
           <CanvasContainer />
         </Route>
