@@ -127,6 +127,7 @@ code {
 
 .loginYoForm{
   display:flex;
+  flex-direction: column;
   box-sizing:border-box;
   border: 10px solid blue;
   justify-content: center;

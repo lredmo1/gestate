@@ -8,7 +8,7 @@ let render = () => {
        return <LineSelection setCurrentWidth={setCurrentWidth} setEraseState={setEraseState} setToolbarDetailUnambiguous={setToolbarDetailUnambiguous}/>
     } else if (toolbarDetailUnambiguous === "erase") {
         return <EraserSelection setCurrentWidth={setCurrentWidth} setEraseState={setEraseState} setToolbarDetailUnambiguous={setToolbarDetailUnambiguous}/>
-    } else if (toolbarDetailUnambiguous === "color-Wheel") {
+    } else if (toolbarDetailUnambiguous === "colorwheel") {
         return <ColorSelection setCurrentColor={setCurrentColor} setToolbarDetailUnambiguous={setToolbarDetailUnambiguous}/>
     }
 }
