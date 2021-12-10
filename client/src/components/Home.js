@@ -12,10 +12,10 @@ function Home() {
       <div className = "loginlogout">
       <ul className="home-links">
         <div className="homelinkZZ">
-        <li className="home-links">
+        <li className="homelinks">
           <NavLink to="/dashboard">Log In</NavLink>
         </li>
-        <li className="home-links">
+        <li className="homelinks">
           <NavLink to="/signup">Sign Up</NavLink>
         </li>
         </div>

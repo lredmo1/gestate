@@ -28,8 +28,8 @@ function CreateDrawing({ onLogin, user, setDispear }) {
   //Drawing(id: integer, name: string, user_id: integer, created_at: datetime, updated_at: datetime) 
 
   return (
-    <div className="loginYo">
-      <div className = "loginYoForm">
+    <div className="newDrawingCreate">
+      <div className = "newDrawingCreateForm">
       <div className="form">
         <form onSubmit={handleSubmit}>
           <div className="input">
@@ -45,7 +45,7 @@ function CreateDrawing({ onLogin, user, setDispear }) {
             </label>
           </div>
           <div className="button-submit">
-            <button type="submit">YOYO</button>
+            <button type="submit">Create a New MasterPiece</button>
           </div>
         </form>
       </div>

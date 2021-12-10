@@ -71,7 +71,7 @@ const newNewZIndex = (newZIndex) => {
               </label>
               </div>
               <div className="button-submit">
-              <button type="submit">Add A Layer</button>
+              <button type="submit">Add</button>
           </div>
         </form>
       </div>

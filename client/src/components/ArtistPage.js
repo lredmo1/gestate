@@ -45,7 +45,7 @@ function ArtistPage({setUser, user, onLogin}) {
         </Route>
         </Switch>
         <div className = {disappearOfArtistPage? "TitleArtistPage":"candy"}>
-          <h1 className="title">{user.username}</h1>
+          <h1 className="titleZZZ">{user.username}</h1>
         </div>
           <div className = "DrawingContainer">
           <DrawingContainer setDisappearOfArtistPage ={setDisappearOfArtistPage} user={user}/>
