@@ -7,30 +7,31 @@ function CreateLayer({ onLogin, user, setDispear, drawingZ, information }) {
   const [layername, setLayerName] = useState("");
   const [zindex,setZIndex] = useState(1)
 
+  
+ const newZIndex = () => {
+  if(information.length === 0){
+   return 1
+  }else{
+    return information.map(data=>{return data.split(",")[1]})
+  }
+}
 
-  // let pleasework = information.map(data=>{return data.split(",")[1]})
+const newNewZIndex = (newZIndex) => {
+  if(newZIndex === 1){
+    return 1
+  } else {
+    return Math.max(...newZIndex)+1
+  }
+}
 
 
+  console.log("------")
+  console.log(information)
+  console.log("------")
+  console.log(newZIndex())
+  console.log(newNewZIndex(newZIndex()))
 
-  // console.log(!!pleasework)
 
-  // const newZIndex = () => {
-  //   if(pleasework === "-Infinity"){
-  //    return 1
-  //   }else{
-  //     return Math.max(...pleasework)+1
-  //   }
-  // }
-
-  // console.log("------")
-  // console.log(information)
-  // console.log("------")
-  // console.log(pleasework)
-  // console.log(newZIndex())
-
-  // if(newZIndex){
-  //   setZIndex(newZIndex)
-  // }
 
 
   const handleSubmit = (e) => {
@@ -44,7 +45,7 @@ function CreateLayer({ onLogin, user, setDispear, drawingZ, information }) {
         name:layername,
         position:1,
         drawing_id:drawingZ,
-        information: `"",10`
+        information: `#00FA00,${newNewZIndex(newZIndex())}`
       }),
     }).then((resp) => resp.json())
     .then((data) => console.log(data));

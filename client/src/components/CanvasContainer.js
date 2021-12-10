@@ -30,7 +30,7 @@ function CanvasContainer({user, drawingZ}) {
 
   return (
     <>
-    {/* <CreateLayer drawingZ = {drawingZ} information = {information}/> */}
+    <CreateLayer drawingZ = {drawingZ} information = {information}/>
     <div className = "LastTry">
     <div className ="Donde">
     <CanvasControls information = {information} superLongState = {superLongState} eraseState = {eraseState} setEraseState = {setEraseState} setCurrentColor = {setCurrentColor} setCurrentWidth = {setCurrentWidth} setSuperLongState = {setSuperLongState} setEraseState = {setEraseState}/>
