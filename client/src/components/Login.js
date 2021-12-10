@@ -35,8 +35,11 @@ function Login({ onLogin }) {
   };
 
   return (
-    <div id="login-container">
+    <div className="loginYo">
+      <div className = "loginYoTitle">
       <h1 className="title">Log In</h1>
+      </div>
+      <div className = "loginYoForm">
       <div className="form">
         <form onSubmit={handleSubmit}>
           <div className="input">
@@ -71,6 +74,7 @@ function Login({ onLogin }) {
       {/* <div className="error-wrapper">{errors.length > 0 && errors.map((error)=> <p>{error}</p>)}</div> */}
       <div id="temporary-link">
         <NavLink to="/home">Home</NavLink>
+      </div>
       </div>
     </div>
   );

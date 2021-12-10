@@ -2,8 +2,11 @@ import { NavLink } from 'react-router-dom'
 import { Switch, Route } from "react-router-dom";
 import CanvasContainer from './CanvasContainer';
 import DrawingContainer from './DrawingContainer';
+import { useState } from "react";
 
 function ArtistPage({setUser, user}) {
+
+  const [disappearOfArtistPage, setDisappearOfArtistPage] = useState(true)
 
     function handleLogout() {
         fetch("/logout", {
@@ -16,16 +19,24 @@ function ArtistPage({setUser, user}) {
       }
 
   return (
-    <div id="artist-page-container">
+  <div className="ArtistPageContainer">
         <Route exact path="/dashboard/canvas">
           <CanvasContainer />
         </Route>
-      <h1 className="title">ArtistPage</h1>
-      <DrawingContainer user={user}/>
+        <div className = {disappearOfArtistPage? "TitleArtistPage":"candy"}>
+          <h1 className="title">ArtistPage</h1>
+        </div>
+          <div className = "DrawingContainer">
+          <DrawingContainer setDisappearOfArtistPage ={setDisappearOfArtistPage} user={user}/>
+        </div>
+      <div className = "ArtistPageContainerBottom">
+        <div className = "ArtistPageMenu">
       <div className="artist-div"><NavLink to="/dashboard/canvas">create new drawing</NavLink></div>
       <div className="artist-div"><button onClick={handleLogout}>Log Out</button></div>
       <div className="artist-div"><NavLink to="/settings">Edit Profile</NavLink></div>
-    </div>
+      </div>
+      </div>
+  </div>
   );
 }
 

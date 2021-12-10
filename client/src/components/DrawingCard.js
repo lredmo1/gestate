@@ -1,14 +1,13 @@
-function DrawingCard({drawing, setDrawing, setCanvasView}) {
+function DrawingCard({drawing, setDrawing, setCanvasView, setDisappearOfArtistPage}) {
 
     const handleClick = (e) => {
         setCanvasView(true)
         setDrawing(drawing.id)
-        console.log('hello')
-        console.log(drawing.id)
+        setDisappearOfArtistPage(false)
     }
 
     return (
-    <div>
+    <div className="drawingCard">
     <h1 onClick={handleClick}>{drawing.name}</h1>
     </div>
     )
