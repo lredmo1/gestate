@@ -2,9 +2,13 @@ import { NavLink } from 'react-router-dom'
 import { Switch, Route } from "react-router-dom";
 import CanvasContainer from './CanvasContainer';
 import DrawingContainer from './DrawingContainer';
+
 import { useState } from "react";
 
-function ArtistPage({setUser, user}) {
+import UserSettings from './UserSettings';
+
+
+function ArtistPage({setUser, user, onLogin}) {
 
   const [disappearOfArtistPage, setDisappearOfArtistPage] = useState(true)
 
@@ -13,16 +17,21 @@ function ArtistPage({setUser, user}) {
           method: "DELETE",
         }).then((resp) => {
           if (resp.ok) {
-            setUser(null);
+            onLogin(null);
           }
         });
       }
 
   return (
   <div className="ArtistPageContainer">
+        <Switch>
         <Route exact path="/dashboard/canvas">
           <CanvasContainer />
         </Route>
+        <Route exact path="/settings">
+          <UserSettings user={user} onLogin={onLogin} />
+        </Route>
+        </Switch>
         <div className = {disappearOfArtistPage? "TitleArtistPage":"candy"}>
           <h1 className="title">ArtistPage</h1>
         </div>

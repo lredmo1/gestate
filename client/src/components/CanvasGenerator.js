@@ -10,7 +10,7 @@ function CanvasGenerator({user, drawingZ, setEraseState,eraseState,currentColor,
     //  setSuperLongState((dog)=> [...dog,linePathSingleStroke])
 
     useEffect(()=>{
-        fetch(`http://localhost:3000/drawings/${drawingZ}`)
+        fetch(`/drawings/${drawingZ}`)
         .then((r)=> r.json())
         .then((drawing)=> drawing.layers.forEach((layer)=>setInformation((dog)=> [...dog,`${layer.information},${layer.id}`])
         ))
