@@ -25,11 +25,11 @@ const newNewZIndex = (newZIndex) => {
 }
 
 
-  console.log("------")
-  console.log(information)
-  console.log("------")
-  console.log(newZIndex())
-  console.log(newNewZIndex(newZIndex()))
+  // console.log("------")
+  // console.log(information)
+  // console.log("------")
+  // console.log(newZIndex())
+  // console.log(newNewZIndex(newZIndex()))
 
 
 
@@ -45,7 +45,7 @@ const newNewZIndex = (newZIndex) => {
         name:layername,
         position:1,
         drawing_id:drawingZ,
-        information: `#00FA00,${newNewZIndex(newZIndex())}`
+        information: `"",${newNewZIndex(newZIndex())}`
       }),
     }).then((resp) => resp.json())
     .then((data) => console.log(data));

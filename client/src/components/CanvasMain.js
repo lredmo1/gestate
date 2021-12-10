@@ -60,8 +60,8 @@ function CanvasMain({informationreDraw, drawingZ, inform, eraseState, setEraseSt
 
       let fullStrokeStart = drawingArray.start_stroke
       let fullStrokeMiddle = drawingArray.line_path
-
-      if (fullStrokeStart === 'erase'){
+      let fullStrokeStartErase = drawingArray.start_stroke.split(",")
+      if (fullStrokeStartErase[0] === 'erase'){
         const eraseReDraw = (fullStrokeMiddle) => {
           let split = fullStrokeMiddle.split(",")
           for (let i = 0; i < split.length; i += 4) {
@@ -128,7 +128,7 @@ function CanvasMain({informationreDraw, drawingZ, inform, eraseState, setEraseSt
     setcounter((count)=>count+=1)}
     else {
       setIsActuallyErasing(true)
-      setSuperLongState((dog)=> [...dog,"erase"])
+      setSuperLongState((dog)=> [...dog,`erase,1,2,3,4,${drawingZ},${canvasInformation[2]}`])
     }
   }
   

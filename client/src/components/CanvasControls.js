@@ -32,8 +32,11 @@ function CanvasControls({drawingZ, information, setCurrentColor, setCurrentWidth
     const saveIt = (arrayOfStrokeData) => {
 
         let exampleData = []
+        console.log(exampleData)
         for(let i=0;i<arrayOfStrokeData.length;i+=2){
+        
         let split = arrayOfStrokeData[i].split(",")
+        console.log(split[6])
         let stroke = {
         start_stroke: arrayOfStrokeData[i],
         line_path: arrayOfStrokeData[i+1],
@@ -45,7 +48,7 @@ function CanvasControls({drawingZ, information, setCurrentColor, setCurrentWidth
         }
     
         fetch(
-            "http://localhost:3000/strokes", {
+            "/strokes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ arrayOfStrokes: JSON.stringify(exampleData) }),

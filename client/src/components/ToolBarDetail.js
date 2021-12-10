@@ -4,7 +4,6 @@ import ColorSelection from "./ColorSelection"
 import LayerSelection from "./LayerSelection"
 
 function ToolBarDetail({drawingZ, information, toolbarDetailUnambiguous, setCurrentWidth, setEraseState, setCurrentColor, setToolbarDetailUnambiguous}) {
-console.log(information)
 
     let render = () => {
     if (toolbarDetailUnambiguous === "line") {
