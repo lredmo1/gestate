@@ -22,7 +22,7 @@ function App() {
   }, []);
 
   if (user) {
-    return <ArtistPage setUser={setUser} user={user} />;
+    return <ArtistPage onLogin={setUser} user={user} />;
   }
 
   return (
@@ -38,9 +38,7 @@ function App() {
         <Route exact path="/signup">
           <Signup onLogin={setUser} />
         </Route>
-        <Route exact path="/settings">
-          <UserSettings user={user} />
-        </Route>
+
         {/* <Route exact path="/canvas">
           <CanvasContainer />
         </Route>
