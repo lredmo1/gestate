@@ -40,7 +40,7 @@ const newNewZIndex = (newZIndex) => {
       })   .then((r)=> r.json())
           .then((layer)=>console.log(layer))
     
-        window.location.reload()
+        // window.location.reload()
     }
 
 

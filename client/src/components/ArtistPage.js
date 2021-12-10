@@ -14,7 +14,7 @@ import { useHistory } from "react-router-dom";
 function ArtistPage({setUser, user, onLogin}) {
 
   let history = useHistory();
-  
+
   const [disappear,setDispear] = useState(false)
 
   const [disappearOfArtistPage, setDisappearOfArtistPage] = useState(true)
@@ -56,7 +56,7 @@ function ArtistPage({setUser, user, onLogin}) {
         </div>
       <div className = "ArtistPageContainerBottom">
         <div className = "ArtistPageMenu">
-      <div className="artist-div"><button onClick = {setDisppearlol}>create new drawing</button></div>
+      <div className="artist-div"><button onClick = {setDisppearlol}>Create New Drawing</button></div>
       <div className="artist-div"><button onClick={handleLogout}>Log Out</button></div>
       <div className="artist-div"><NavLink to="/settings">Edit Profile</NavLink></div>
       </div>
