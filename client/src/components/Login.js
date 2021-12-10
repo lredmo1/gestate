@@ -38,7 +38,7 @@ function Login({ onLogin }) {
     <div className="loginYo">
       <div className = "loginYoTitleSketch">
         <img src = "https://i.imgur.com/BGYYLvx.jpg"></img>
-      <h1 className="title">Log In</h1>
+      <h1 className="title">Fetch-A-Sketch</h1>
       </div>
       <div className = "loginYoForm">
       <div className="formZ">

@@ -58,7 +58,7 @@ function ArtistPage({setUser, user, onLogin}) {
         <div className = "ArtistPageMenu">
       <div className="artist-div"><button onClick = {setDisppearlol}>Create New Drawing</button></div>
       <div className="artist-div"><button onClick={handleLogout}>Log Out</button></div>
-      <div className="artist-div"><NavLink to="/settings">Edit Profile</NavLink></div>
+      <div className="temporarylink"><NavLink to="/settings">Edit Profile</NavLink></div>
       </div>
       </div>
       </div>
