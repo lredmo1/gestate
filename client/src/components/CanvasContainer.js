@@ -1,10 +1,13 @@
 
 import CanvasMain from "./CanvasMain";
+import { Switch, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import CanvasControls from "./CanvasControls";
 import LayersControls from "./IndividualLayer";
 import CanvasGenerator from "./CanvasGenerator";
 import CreateLayer from "./CreateLayer";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
 
 function CanvasContainer({user, drawingZ}) {
   const [currentColor, setCurrentColor] = useState("black");
@@ -16,6 +19,7 @@ function CanvasContainer({user, drawingZ}) {
   const [information,setInformation] = useState([])
   const [informationreDraw,setInformationReDraw] = useState([])
  
+  let history = useHistory();
   //  setSuperLongState((dog)=> [...dog,linePathSingleStroke])
 
   useEffect(()=>{
