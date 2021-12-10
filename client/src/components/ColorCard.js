@@ -8,7 +8,6 @@ function ColorCard({color, setCurrentColor, setToolbarDetailUnambiguous}) {
     return (
     <>
     <div className="color-card" onClick={test}>{color}</div>
-    
     </>
     )
 }

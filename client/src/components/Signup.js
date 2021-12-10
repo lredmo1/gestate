@@ -39,8 +39,11 @@ function Signup({ onLogin }) {
 
   return (
     <>
-    <div id="signup-container">
+    <div className="SignupContainer">
+      <div className = "SignupTitle">
       <h1 className="title">Sign Up</h1>
+      </div>
+      <div className = "SignupFormContainer">
       <div className="form">
       <form onSubmit={handleSubmit}>
       <div className="input">
@@ -112,7 +115,11 @@ function Signup({ onLogin }) {
         <div className="button-submit">
         <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button></div>
       </form></div>
-      // <div className="error-wrapper">{errors.length > 0 && errors.map((error)=> <p>{error}</p>)}</div>
+      <div className="error-wrapper">{errors.length > 0 && errors.map((error)=> <p>{error}</p>)}</div>
+      </div>
+      <div className="SignupSpacingBox">
+
+      </div>
       </div>
     </>
   );

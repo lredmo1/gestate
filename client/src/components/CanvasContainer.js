@@ -14,8 +14,14 @@ function CanvasContainer({user, drawingZ}) {
 
   return (
     <>
+    <div className = "LastTry">
+    <div className ="Donde">
     <CanvasControls superLongState = {superLongState} eraseState = {eraseState} setEraseState = {setEraseState} setCurrentColor = {setCurrentColor} setCurrentWidth = {setCurrentWidth} setSuperLongState = {setSuperLongState} setEraseState = {setEraseState}/>
+    </div>
+    <div className ="Esta">
     <CanvasGenerator user ={user} drawingZ = {drawingZ} setEraseState ={setEraseState} eraseState ={eraseState} currentColor={currentColor} currentWidth={currentWidth} setSuperLongState={setSuperLongState} superLongState={superLongState}/>;
+    </div>
+    </div>
   </>)
 }
 

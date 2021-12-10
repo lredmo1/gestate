@@ -9,6 +9,7 @@ import CanvasContainer from "./CanvasContainer";
 import UserSettings from "./UserSettings";
 import ArtistPage from "./ArtistPage";
 import Login from "./Login";
+import styled from 'styled-components';  
 
 function App() {
   const [user, setUser] = useState(null);

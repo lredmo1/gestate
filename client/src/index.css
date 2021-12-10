@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -12,6 +13,181 @@ code {
     monospace;
 }
 
+.candy{
+  box-sizing:border-box;
+  display:none;
+}
+
+.HomePage{
+ display:flex;
+ flex-direction: column;
+ box-sizing:border-box;
+ border: 10px solid red;
+ height: 100vh;
+ width: 100vw;
+}
+
+.ArtistPageContainer{
+    display:flex;
+    box-sizing:border-box;
+    flex-direction: column;
+    border: 10px solid blue;
+    height: 100vh;
+    width: 100vw;
+}
+
+.SignupContainer{
+    display:flex;
+    box-sizing:border-box;
+    flex-direction: column;
+    border: 10px solid green;
+    height: 100vh;
+    width: 100vw;
+}
+
+.loginYo{
+  display:flex;
+  flex-direction: column;
+  box-sizing:border-box;
+  border: 10px solid pink;
+  height: 100vh;
+  width: 100vw;
+}
+
+.TitleArtistPage{
+  display:flex;
+  box-sizing:border-box;
+  border: 10px solid green;
+  justify-content: center;
+  height: 15vh;
+  width: 100vw;
+}
+
+.DrawingContainer{
+  display:flex;
+  flex-direction: row;
+  box-sizing:border-box;
+  border: 10px solid blue;
+  justify-content: center;
+  height: 70vh;
+  width: 100vw;
+}
+
+.ArtistPageContainerBottom{
+  display:flex;
+  box-sizing:border-box;
+  border: 10px solid forestgreen;
+  justify-content: center;
+  height: 15vh;
+  width: 100vw;
+}
+
+
+.ArtistPageMenu{
+  display:flex;
+  flex-direction: column;
+  box-sizing:border-box;
+  border: 10px solid violet;
+  justify-content: center;
+  align-items: center;
+  height: 15vh;
+  width: 100vw;
+}
+
+.HomeBox{
+  display:flex;
+  box-sizing:border-box;
+  border: 10px solid green;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  width: 100vw;
+}
+
+.loginlogout{
+  display:flex;
+  box-sizing:border-box;
+  border: 10px solid blue;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  width: 100vw;
+}
+
+.loginYoTitle{
+  display:flex;
+  box-sizing:border-box;
+  border: 10px solid blue;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  width: 100vw;
+
+}
+
+.loginYoForm{
+  display:flex;
+  box-sizing:border-box;
+  border: 10px solid blue;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+  width: 100vw;
+}
+
+.SignupTitle{
+  display:flex;
+  box-sizing:border-box;
+  border: 10px solid blue;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+  width: 100vw;
+}
+
+.SignupFormContainer{
+  display:flex;
+  box-sizing:border-box;
+  border: 10px solid blue;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  width: 100vw;
+}
+
+.SignupSpacingBox{
+  display:flex;
+  box-sizing:border-box;
+  border: 10px solid blue;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+  width: 100vw;
+}
+
+.drawingCard{
+  display:flex;
+  box-sizing:border-box;
+  border: 10px solid blue;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  width: 100vw;
+}
+
+.Donde{
+  display:flex;
+  box-sizing:border-box;
+  border: 10px solid red;
+  justify-content: end;
+  align-items: center;
+  width: 100vw;
+  height: 5vh;
+}
+
+
+
+/* 
 .error-wrapper p {
   color: red;
   background-color: mistyrose;
@@ -21,7 +197,7 @@ code {
   align-items: center;
   gap: 8px;
   margin: 8px 0;
-}
+} */
 
 .canvasMain {
   cursor: crosshair;
