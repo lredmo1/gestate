@@ -1,7 +1,7 @@
 import ColorCard from "./ColorCard"
 
 function ColorSelection({setCurrentColor, setToolbarDetailUnambiguous}) {
-    const colors = [
+    const colorwheelz = [
         "f44336"
         ,"d50000"
         ,"e91e63"
@@ -263,7 +263,7 @@ function ColorSelection({setCurrentColor, setToolbarDetailUnambiguous}) {
         ,"263238"
         ,"ffffff"
         ,"000000"]
-    let colorWheel = colors.map((color)=><ColorCard key={color} color={color} setCurrentColor={setCurrentColor} setToolbarDetailUnambiguous={setToolbarDetailUnambiguous}/>)
+    let colorWheel = colorwheelz.map((color)=><ColorCard key={color} color={color} setCurrentColor={setCurrentColor} setToolbarDetailUnambiguous={setToolbarDetailUnambiguous}/>)
     
     return (
     <>

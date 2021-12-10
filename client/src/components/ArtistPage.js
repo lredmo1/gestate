@@ -2,13 +2,17 @@ import { NavLink } from 'react-router-dom'
 import { Switch, Route } from "react-router-dom";
 import CanvasContainer from './CanvasContainer';
 import DrawingContainer from './DrawingContainer';
+import CreateDrawing from './CreateDrawing';
 
 import { useState } from "react";
 
 import UserSettings from './UserSettings';
 
 
+
 function ArtistPage({setUser, user, onLogin}) {
+
+  const [disappear,setDispear] = useState(false)
 
   const [disappearOfArtistPage, setDisappearOfArtistPage] = useState(true)
 
@@ -22,8 +26,16 @@ function ArtistPage({setUser, user, onLogin}) {
         });
       }
 
+      const setDisppearlol = () => {
+        setDispear(true)
+      }
+
   return (
   <div className="ArtistPageContainer">
+    <div className = {disappear? "":"candy"}>
+    <CreateDrawing user = {user} setDispear = {setDispear} />
+    </div>
+        <div className = {disappear? "candy":""}>
         <Switch>
         <Route exact path="/dashboard/canvas">
           <CanvasContainer />
@@ -40,11 +52,13 @@ function ArtistPage({setUser, user, onLogin}) {
         </div>
       <div className = "ArtistPageContainerBottom">
         <div className = "ArtistPageMenu">
-      <div className="artist-div"><NavLink to="/dashboard/canvas">create new drawing</NavLink></div>
+      <div className="artist-div"><button onClick = {setDisppearlol}>create new drawing</button></div>
       <div className="artist-div"><button onClick={handleLogout}>Log Out</button></div>
       <div className="artist-div"><NavLink to="/settings">Edit Profile</NavLink></div>
       </div>
       </div>
+      </div>
+
   </div>
   );
 }

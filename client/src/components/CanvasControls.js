@@ -3,9 +3,10 @@ import ToolBarDetail from "./ToolBarDetail"
 import { NavLink } from 'react-router-dom'
 
 
-function CanvasControls({setCurrentColor, setCurrentWidth, setSuperLongState, setEraseState, superLongState}) {
+function CanvasControls({information, setCurrentColor, setCurrentWidth, setSuperLongState, setEraseState, superLongState}) {
 
     const [toolbarDetailUnambiguous, setToolbarDetailUnambiguous] = useState("")
+  
 
     const handleColorChangeGreen = (e) => {
     setCurrentColor("green");
@@ -26,11 +27,6 @@ function CanvasControls({setCurrentColor, setCurrentWidth, setSuperLongState, se
     const handleColorChangeErase = (e) => {
     setCurrentColor("white");
     };
-
-
-
-
-
 
     const saveIt = (arrayOfStrokeData) => {
 
@@ -63,7 +59,7 @@ function CanvasControls({setCurrentColor, setCurrentWidth, setSuperLongState, se
     }
 
     const handleColorChoice = () => {
-        setToolbarDetailUnambiguous("color-wheel")
+        setToolbarDetailUnambiguous("colorwheel")
         setEraseState(false)
         console.log(toolbarDetailUnambiguous)
     }
@@ -80,17 +76,26 @@ function CanvasControls({setCurrentColor, setCurrentWidth, setSuperLongState, se
         console.log(toolbarDetailUnambiguous)
     }
 
+    
+    const handleLayersChoice = () => {
+        setToolbarDetailUnambiguous("layers")
+        setEraseState(false)
+    }
+
+    const pageReload = () => {
+        window.location.reload()
+    }
+
+
     return (
         <>
-        <NavLink to="/dashboard">Back to Dashboard</NavLink>
+        <button onClick = {pageReload}>Back to Dashboard</button>
+        <button className = "buttonInControls" onClick={(e)=>saveIt(superLongState)}>Save</button>
         <button id="color-wheel-button" onClick={handleColorChoice}>Choose Color</button> 
         <button id="draw-button" onClick={handleLineChoice}>Draw</button> 
         <button id="erase-button"  onClick={handleEraseChoice}>Erase</button> 
-        {/* <LineSelection setCurrentWidth={setCurrentWidth} setEraseState={setEraseState} onclick={handleLineChoice}/>
-        <EraserSelection setCurrentWidth={setCurrentWidth} setEraseState={setEraseState}/>
-        <ColorSelection setCurrentColor={setCurrentColor}/> */}
-      <button className = "buttonInControls" onClick={(e)=>saveIt(superLongState)}>Save</button>
-      {toolbarDetailUnambiguous ? <ToolBarDetail toolbarDetailUnambiguous={toolbarDetailUnambiguous} setCurrentColor={setCurrentColor} setEraseState={setEraseState} setCurrentWidth={setCurrentWidth} setToolbarDetailUnambiguous={setToolbarDetailUnambiguous}/> : null}
+        <button className="layersbutton"  onClick={handleLayersChoice}>Layers</button> 
+        {toolbarDetailUnambiguous ? <ToolBarDetail information = {information} toolbarDetailUnambiguous={toolbarDetailUnambiguous} setCurrentColor={setCurrentColor} setEraseState={setEraseState} setCurrentWidth={setCurrentWidth} setToolbarDetailUnambiguous={setToolbarDetailUnambiguous}/> : null}
       {/* <button className = "buttonInControls" onClick={handleColorChangeBlack}>Black</button>
       <button className = "buttonInControls" onClick={handleColorChangeGreen}>Green</button>
       <button className = "buttonInControls" onClick={handleColorChangeYellow}>Yellow</button>

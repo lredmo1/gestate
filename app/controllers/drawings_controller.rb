@@ -10,4 +10,15 @@ class DrawingsController < ApplicationController
         drawing = Drawing.find(params[:id])
         render json: drawing, status:200
      end 
+     
+     def create
+      drawing = Drawing.create!(drawing_params)
+      render json: drawing, status: :created
+    end
+
+    private
+
+    def drawing_params
+      params.permit(:user_id,:name)
+    end  
 end
