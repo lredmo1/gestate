@@ -7,11 +7,14 @@ import CreateDrawing from './CreateDrawing';
 import { useState } from "react";
 
 import UserSettings from './UserSettings';
+import { useHistory } from "react-router-dom";
 
 
 
 function ArtistPage({setUser, user, onLogin}) {
 
+  let history = useHistory();
+  
   const [disappear,setDispear] = useState(false)
 
   const [disappearOfArtistPage, setDisappearOfArtistPage] = useState(true)
@@ -23,6 +26,7 @@ function ArtistPage({setUser, user, onLogin}) {
           if (resp.ok) {
             onLogin(null);
           }
+          history.push("/home")
         });
       }
 

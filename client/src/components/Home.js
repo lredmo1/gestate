@@ -7,7 +7,7 @@ function Home() {
     <div className = "HomePage">
       <div className = "HomeBox">
         <img src="https://i.imgur.com/OwAsg0n.jpg" alt ="sketchy"/>
-      <h1>Etch A Sketch</h1>
+      <h1>Fetch-A-Sketch</h1>
       </div>
       <div className = "loginlogout">
       <ul className="home-links">
