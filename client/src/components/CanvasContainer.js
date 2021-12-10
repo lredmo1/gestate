@@ -1,10 +1,13 @@
 
 import CanvasMain from "./CanvasMain";
+import { Switch, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import CanvasControls from "./CanvasControls";
 import LayersControls from "./IndividualLayer";
 import CanvasGenerator from "./CanvasGenerator";
 import CreateLayer from "./CreateLayer";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
 
 function CanvasContainer({user, drawingZ}) {
   const [currentColor, setCurrentColor] = useState("black");
@@ -16,6 +19,7 @@ function CanvasContainer({user, drawingZ}) {
   const [information,setInformation] = useState([])
   const [informationreDraw,setInformationReDraw] = useState([])
  
+  let history = useHistory();
   //  setSuperLongState((dog)=> [...dog,linePathSingleStroke])
 
   useEffect(()=>{
@@ -30,10 +34,9 @@ function CanvasContainer({user, drawingZ}) {
 
   return (
     <>
-    {/* <CreateLayer drawingZ = {drawingZ} information = {information}/> */}
     <div className = "LastTry">
     <div className ="Donde">
-    <CanvasControls information = {information} superLongState = {superLongState} eraseState = {eraseState} setEraseState = {setEraseState} setCurrentColor = {setCurrentColor} setCurrentWidth = {setCurrentWidth} setSuperLongState = {setSuperLongState} setEraseState = {setEraseState}/>
+    <CanvasControls drawingZ = {drawingZ} information = {information} superLongState = {superLongState} eraseState = {eraseState} setEraseState = {setEraseState} setCurrentColor = {setCurrentColor} setCurrentWidth = {setCurrentWidth} setSuperLongState = {setSuperLongState} setEraseState = {setEraseState}/>
     </div>
     <div className ="Esta">
     <CanvasGenerator information ={information} user ={user} drawingZ = {drawingZ} setEraseState ={setEraseState} eraseState ={eraseState} currentColor={currentColor} currentWidth={currentWidth} setSuperLongState={setSuperLongState} superLongState={superLongState}/>;

@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import ToolBarDetail from "./ToolBarDetail"
 import { NavLink } from 'react-router-dom'
+import CreateLayer from "./CreateLayer";
 
 
-function CanvasControls({information, setCurrentColor, setCurrentWidth, setSuperLongState, setEraseState, superLongState}) {
+function CanvasControls({drawingZ, information, setCurrentColor, setCurrentWidth, setSuperLongState, setEraseState, superLongState}) {
 
     const [toolbarDetailUnambiguous, setToolbarDetailUnambiguous] = useState("")
   
@@ -89,13 +90,14 @@ function CanvasControls({information, setCurrentColor, setCurrentWidth, setSuper
 
     return (
         <>
-        <button onClick = {pageReload}>Back to Dashboard</button>
+            <CreateLayer drawingZ = {drawingZ} information = {information}/>
+            <button className="layersbutton"  onClick={handleLayersChoice}>Layers</button> 
         <button className = "buttonInControls" onClick={(e)=>saveIt(superLongState)}>Save</button>
         <button id="color-wheel-button" onClick={handleColorChoice}>Choose Color</button> 
         <button id="draw-button" onClick={handleLineChoice}>Draw</button> 
         <button id="erase-button"  onClick={handleEraseChoice}>Erase</button> 
-        <button className="layersbutton"  onClick={handleLayersChoice}>Layers</button> 
-        {toolbarDetailUnambiguous ? <ToolBarDetail information = {information} toolbarDetailUnambiguous={toolbarDetailUnambiguous} setCurrentColor={setCurrentColor} setEraseState={setEraseState} setCurrentWidth={setCurrentWidth} setToolbarDetailUnambiguous={setToolbarDetailUnambiguous}/> : null}
+        {toolbarDetailUnambiguous ? <ToolBarDetail drawingZ = {drawingZ} information = {information} toolbarDetailUnambiguous={toolbarDetailUnambiguous} setCurrentColor={setCurrentColor} setEraseState={setEraseState} setCurrentWidth={setCurrentWidth} setToolbarDetailUnambiguous={setToolbarDetailUnambiguous}/> : null}
+        <button onClick = {pageReload}>Back to Dashboard</button>
       {/* <button className = "buttonInControls" onClick={handleColorChangeBlack}>Black</button>
       <button className = "buttonInControls" onClick={handleColorChangeGreen}>Green</button>
       <button className = "buttonInControls" onClick={handleColorChangeYellow}>Yellow</button>

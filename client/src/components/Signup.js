@@ -44,7 +44,7 @@ function Signup({ onLogin }) {
       <h1 className="title">Sign Up</h1>
       </div>
       <div className = "SignupFormContainer">
-      <div className="form">
+      <div className="formZZ">
       <form onSubmit={handleSubmit}>
       <div className="input">
         <label>

@@ -6,16 +6,19 @@ function Home() {
     <>
     <div className = "HomePage">
       <div className = "HomeBox">
-      <h1>App Title Here</h1>
+        <img src="https://i.imgur.com/OwAsg0n.jpg" alt ="sketchy"/>
+      <h1>Etch A Sketch</h1>
       </div>
       <div className = "loginlogout">
       <ul className="home-links">
+        <div className="homelinkZZ">
         <li className="home-links">
           <NavLink to="/dashboard">Log In</NavLink>
         </li>
         <li className="home-links">
           <NavLink to="/signup">Sign Up</NavLink>
         </li>
+        </div>
       </ul>
       </div>
     </div>
