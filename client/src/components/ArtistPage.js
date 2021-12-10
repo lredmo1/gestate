@@ -11,7 +11,7 @@ function ArtistPage({setUser, user, onLogin}) {
           method: "DELETE",
         }).then((resp) => {
           if (resp.ok) {
-            setUser(null);
+            onLogin(null);
           }
         });
       }

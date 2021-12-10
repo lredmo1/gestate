@@ -3,7 +3,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import CanvasMain from "./CanvasMain";
 import Home from "./Home";
-import LoggedInDashboard from "./LoggedInDashboard";
+import LoginContainer from "./LoginContainer";
 import Signup from "./Signup";
 import CanvasContainer from "./CanvasContainer";
 import UserSettings from "./UserSettings";
@@ -33,7 +33,7 @@ function App() {
           <Home />
         </Route>
         <Route exact path="/dashboard">
-          <LoggedInDashboard onLogout={setUser} onLogin={setUser} user={user} />
+          <LoginContainer onLogout={setUser} onLogin={setUser} user={user} />
         </Route>
         <Route exact path="/signup">
           <Signup onLogin={setUser} />

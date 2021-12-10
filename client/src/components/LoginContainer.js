@@ -2,7 +2,7 @@ import Login from "./Login";
 import ArtistPage from "./ArtistPage";
 
 
-function LoggedInDashboard({onLogin, onLogout, user}) {
+function LoginContainer({onLogin, onLogout, user}) {
     return (
         <>
         {user ? "" : <Login onLogin={onLogin} />}
@@ -10,4 +10,4 @@ function LoggedInDashboard({onLogin, onLogout, user}) {
     )
 }
 
-export default LoggedInDashboard
+export default LoginContainer
