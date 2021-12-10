@@ -30,10 +30,9 @@ function CanvasContainer({user, drawingZ}) {
 
   return (
     <>
-    <CreateLayer drawingZ = {drawingZ} information = {information}/>
     <div className = "LastTry">
     <div className ="Donde">
-    <CanvasControls information = {information} superLongState = {superLongState} eraseState = {eraseState} setEraseState = {setEraseState} setCurrentColor = {setCurrentColor} setCurrentWidth = {setCurrentWidth} setSuperLongState = {setSuperLongState} setEraseState = {setEraseState}/>
+    <CanvasControls drawingZ = {drawingZ} information = {information} superLongState = {superLongState} eraseState = {eraseState} setEraseState = {setEraseState} setCurrentColor = {setCurrentColor} setCurrentWidth = {setCurrentWidth} setSuperLongState = {setSuperLongState} setEraseState = {setEraseState}/>
     </div>
     <div className ="Esta">
     <CanvasGenerator information ={information} user ={user} drawingZ = {drawingZ} setEraseState ={setEraseState} eraseState ={eraseState} currentColor={currentColor} currentWidth={currentWidth} setSuperLongState={setSuperLongState} superLongState={superLongState}/>;

@@ -17,6 +17,12 @@ class LayersController < ApplicationController
     render json: layer, status: :created
   end
 
+  def update
+    layer = Layer.find(params[:id])
+    layer.update(layer_params)
+    render json: layer, status: :ok
+  end
+
   private
 
   def layer_params

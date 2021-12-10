@@ -330,6 +330,19 @@ code {
 
 
 
+.CreateLayerContainer .CreateLayerForm{
+  display:flex;
+  box-sizing:border-box;
+  flex-direction: row;
+
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  width: 25vw;
+}
+
+
+
 /* 
 .error-wrapper p {
   color: red;

@@ -3,7 +3,7 @@ import EraserSelection from "./EraserSelection"
 import ColorSelection from "./ColorSelection"
 import LayerSelection from "./LayerSelection"
 
-function ToolBarDetail({information, toolbarDetailUnambiguous, setCurrentWidth, setEraseState, setCurrentColor, setToolbarDetailUnambiguous}) {
+function ToolBarDetail({drawingZ, information, toolbarDetailUnambiguous, setCurrentWidth, setEraseState, setCurrentColor, setToolbarDetailUnambiguous}) {
 console.log(information)
 
     let render = () => {
@@ -14,7 +14,7 @@ console.log(information)
     } else if (toolbarDetailUnambiguous === "colorwheel") {
         return <ColorSelection setCurrentColor={setCurrentColor} setToolbarDetailUnambiguous={setToolbarDetailUnambiguous}/>
     } else if  (toolbarDetailUnambiguous === "layers"){
-        return <LayerSelection information ={information}/>
+        return <LayerSelection drawingZ ={drawingZ} information ={information}/>
     }
 }
 

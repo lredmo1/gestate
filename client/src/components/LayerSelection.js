@@ -1,8 +1,8 @@
 import IndividualLayer from "./IndividualLayer"
 
-function LayerSelection({information}) {
+function LayerSelection({information, drawingZ}) {
     console.log(information)
-    let layerButtons = information.map((layer)=><IndividualLayer information ={information} layer={layer} />)
+    let layerButtons = information.map((layer)=><IndividualLayer drawingZ ={drawingZ} information ={information} layer={layer} />)
 
     return (
     <h1>{layerButtons}</h1>

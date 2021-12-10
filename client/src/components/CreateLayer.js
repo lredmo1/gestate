@@ -54,8 +54,8 @@ const newNewZIndex = (newZIndex) => {
     };
 
   return (
-    <div className="loginYo">
-      <div className = "loginYoForm">
+    <div className="CreateLayerContainer">
+      <div className = "CreateLayerForm">
       <div className="form">
         <form onSubmit={handleSubmit}>
           <div className="input">
@@ -71,10 +71,11 @@ const newNewZIndex = (newZIndex) => {
               </label>
               </div>
               <div className="button-submit">
-              <button type="submit">YOgfdnaZJLKjndgfljkasdnfgljkanfsdlkjnfadsYO</button>
+              <button type="submit">Add A Layer</button>
           </div>
         </form>
       </div>
+
       </div>
     </div>
   );

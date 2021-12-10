@@ -42,9 +42,9 @@ function CanvasMain({informationreDraw, drawingZ, inform, eraseState, setEraseSt
     canvas.height = window.innerHeight * 2;
     canvas.style.width = `${window.innerWidth}px`
     canvas.style.height = `${window.innerHeight}px`
-    // canvas.style.position = `absolute`
-    // canvas.style.left = 0
-    // canvas.style.top = 10
+    canvas.style.position = `absolute`
+    canvas.style.left = 0
+    canvas.style.top = 100
     canvas.style['z-index'] = canvasInformation[1]
 
   
