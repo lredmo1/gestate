@@ -20,6 +20,7 @@
 # Known Bugs:
  - Routes: The routes in our application need to be reorganized for better user navigation. 
  - Layer Movement: To rearrange layers, the page must be refreshed and the user must navigate back to the selected drawing. This is a result of faulty routing. Clicking a layer should automatically bring the layer to the top of the canvas without requiring this navigation.  
+ - Erase Redraw: If the user hits erase but does not make a line, there will not have a linepath. This throws an error on redraw. This hs been fixed for clicking to draw without a line path and the solution can be repurposed here.
 
 # Future Iterations:
 - Improved navigation such as consistency between buttons and navlinks, adding navigation options on all pages using a navbar
