@@ -27,3 +27,4 @@
 - Delete a drawing
 - Improved routes
 - Layer movement that does not require navigating  back to the canvas
+- Custom cursor for drawing on canvas
