@@ -8,14 +8,25 @@ function CreateLayer({ onLogin, user, setDispear, drawingZ, information }) {
   const [zindex,setZIndex] = useState(1)
 
 
-  let pleasework = information.map(data=>{return data.split(",")[1]})
+  // let pleasework = information.map(data=>{return data.split(",")[1]})
 
-  let newZIndex = (Math.max(pleasework)+1)
-  console.log("------")
-  console.log(information)
-  console.log("------")
-  console.log(pleasework)
-  console.log(newZIndex)
+
+
+  // console.log(!!pleasework)
+
+  // const newZIndex = () => {
+  //   if(pleasework === "-Infinity"){
+  //    return 1
+  //   }else{
+  //     return Math.max(...pleasework)+1
+  //   }
+  // }
+
+  // console.log("------")
+  // console.log(information)
+  // console.log("------")
+  // console.log(pleasework)
+  // console.log(newZIndex())
 
   // if(newZIndex){
   //   setZIndex(newZIndex)
@@ -33,7 +44,7 @@ function CreateLayer({ onLogin, user, setDispear, drawingZ, information }) {
         name:layername,
         position:1,
         drawing_id:drawingZ,
-        information: `#00FA00,${newZIndex}`
+        information: `"",10`
       }),
     }).then((resp) => resp.json())
     .then((data) => console.log(data));

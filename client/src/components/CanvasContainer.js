@@ -2,7 +2,7 @@
 import CanvasMain from "./CanvasMain";
 import { useState, useEffect } from "react";
 import CanvasControls from "./CanvasControls";
-import LayersControls from "./LayersControls";
+import LayersControls from "./IndividualLayer";
 import CanvasGenerator from "./CanvasGenerator";
 import CreateLayer from "./CreateLayer";
 
@@ -21,7 +21,7 @@ function CanvasContainer({user, drawingZ}) {
   useEffect(()=>{
       fetch(`/drawings/${drawingZ}`)
       .then((r)=> r.json())
-      .then((drawing)=> drawing.layers.forEach((layer)=>setInformation((dog)=> [...dog,`${layer.information},${layer.id}`])
+      .then((drawing)=> drawing.layers.forEach((layer)=>setInformation((dog)=> [...dog,`${layer.information},${layer.id},${layer.name}`])
       ))
   },[])
 
@@ -30,7 +30,7 @@ function CanvasContainer({user, drawingZ}) {
 
   return (
     <>
-    <CreateLayer drawingZ = {drawingZ} information = {information}/>
+    {/* <CreateLayer drawingZ = {drawingZ} information = {information}/> */}
     <div className = "LastTry">
     <div className ="Donde">
     <CanvasControls information = {information} superLongState = {superLongState} eraseState = {eraseState} setEraseState = {setEraseState} setCurrentColor = {setCurrentColor} setCurrentWidth = {setCurrentWidth} setSuperLongState = {setSuperLongState} setEraseState = {setEraseState}/>

@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 function CanvasControls({information, setCurrentColor, setCurrentWidth, setSuperLongState, setEraseState, superLongState}) {
 
     const [toolbarDetailUnambiguous, setToolbarDetailUnambiguous] = useState("")
-    console.log(information)
+  
 
     const handleColorChangeGreen = (e) => {
     setCurrentColor("green");
@@ -79,8 +79,7 @@ function CanvasControls({information, setCurrentColor, setCurrentWidth, setSuper
     
     const handleLayersChoice = () => {
         setToolbarDetailUnambiguous("layers")
-        setEraseState(true)
-        console.log(toolbarDetailUnambiguous)
+        setEraseState(false)
     }
 
     const pageReload = () => {
@@ -96,7 +95,7 @@ function CanvasControls({information, setCurrentColor, setCurrentWidth, setSuper
         <button id="draw-button" onClick={handleLineChoice}>Draw</button> 
         <button id="erase-button"  onClick={handleEraseChoice}>Erase</button> 
         <button className="layersbutton"  onClick={handleLayersChoice}>Layers</button> 
-        {toolbarDetailUnambiguous ? <ToolBarDetail toolbarDetailUnambiguous={toolbarDetailUnambiguous} setCurrentColor={setCurrentColor} setEraseState={setEraseState} setCurrentWidth={setCurrentWidth} setToolbarDetailUnambiguous={setToolbarDetailUnambiguous}/> : null}
+        {toolbarDetailUnambiguous ? <ToolBarDetail information = {information} toolbarDetailUnambiguous={toolbarDetailUnambiguous} setCurrentColor={setCurrentColor} setEraseState={setEraseState} setCurrentWidth={setCurrentWidth} setToolbarDetailUnambiguous={setToolbarDetailUnambiguous}/> : null}
       {/* <button className = "buttonInControls" onClick={handleColorChangeBlack}>Black</button>
       <button className = "buttonInControls" onClick={handleColorChangeGreen}>Green</button>
       <button className = "buttonInControls" onClick={handleColorChangeYellow}>Yellow</button>
