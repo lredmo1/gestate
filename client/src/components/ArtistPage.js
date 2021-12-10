@@ -7,10 +7,13 @@ import CreateDrawing from './CreateDrawing';
 import { useState } from "react";
 
 import UserSettings from './UserSettings';
+import { useHistory } from "react-router-dom";
 
 
 
 function ArtistPage({setUser, user, onLogin}) {
+
+  let history = useHistory();
 
   const [disappear,setDispear] = useState(false)
 
@@ -23,6 +26,7 @@ function ArtistPage({setUser, user, onLogin}) {
           if (resp.ok) {
             onLogin(null);
           }
+          history.push("/home")
         });
       }
 
@@ -52,9 +56,9 @@ function ArtistPage({setUser, user, onLogin}) {
         </div>
       <div className = "ArtistPageContainerBottom">
         <div className = "ArtistPageMenu">
-      <div className="artist-div"><button onClick = {setDisppearlol}>create new drawing</button></div>
+      <div className="artist-div"><button onClick = {setDisppearlol}>Create New Drawing</button></div>
       <div className="artist-div"><button onClick={handleLogout}>Log Out</button></div>
-      <div className="artist-div"><NavLink to="/settings">Edit Profile</NavLink></div>
+      <div className="temporarylink"><NavLink to="/settings">Edit Profile</NavLink></div>
       </div>
       </div>
       </div>

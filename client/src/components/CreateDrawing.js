@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 
+
 function CreateDrawing({ onLogin, user, setDispear }) {
 
   const [name, setDrawingName] = useState("");
@@ -24,6 +25,9 @@ function CreateDrawing({ onLogin, user, setDispear }) {
     window.location.reload();
     };
   
+    function backToDashboard() {
+      window.location.reload()
+    }
 
   //Drawing(id: integer, name: string, user_id: integer, created_at: datetime, updated_at: datetime) 
 
@@ -45,10 +49,11 @@ function CreateDrawing({ onLogin, user, setDispear }) {
             </label>
           </div>
           <div className="button-submit">
-            <button type="submit">YOYO</button>
+            <button type="submit">Creat New Drawing</button>
           </div>
         </form>
       </div>
+      <button onClick = {backToDashboard}>Back to Dashboard</button>
       </div>
     </div>
   );

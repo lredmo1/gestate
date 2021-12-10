@@ -1,3 +1,14 @@
+@font-face {
+  font-family: Sketch;
+  src: url(./fonts/Sketch.ttf);
+}
+
+@font-face {
+  font-family: sketchy;
+  font-family: sketchy;
+  src: url(./fonts/sketchy.ttf);
+}
+
 body {
   margin: 0;
   
@@ -6,6 +17,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* font-family: Sketch; */
+}
+
+h1 {
+  font-family: sketchy;
+  font-size: 40px;
 }
 
 code {
@@ -457,3 +474,18 @@ code {
 .artist-div {
   grid-column: 1 / span 4;
 } */
+
+.artist-div-to-button{
+  height: 20px;
+  width: 100px;
+  background-color: rgb(228, 227, 227);
+  border: 1px solid grey;
+  border-radius: 10%;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.artist-div-to-button NavLink{
+  margin: auto;
+}
