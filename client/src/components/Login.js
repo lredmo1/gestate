@@ -36,11 +36,12 @@ function Login({ onLogin }) {
 
   return (
     <div className="loginYo">
-      <div className = "loginYoTitle">
+      <div className = "loginYoTitleSketch">
+        <img src = "https://i.imgur.com/BGYYLvx.jpg"></img>
       <h1 className="title">Log In</h1>
       </div>
       <div className = "loginYoForm">
-      <div className="form">
+      <div className="formZ">
         <form onSubmit={handleSubmit}>
           <div className="input">
             <label>
@@ -72,7 +73,7 @@ function Login({ onLogin }) {
         </form>
       </div>
       {/* <div className="error-wrapper">{errors.length > 0 && errors.map((error)=> <p>{error}</p>)}</div> */}
-      <div id="temporary-link">
+      <div className="temporarylink">
         <NavLink to="/home">Home</NavLink>
       </div>
       </div>

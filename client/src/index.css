@@ -22,7 +22,6 @@ code {
  display:flex;
  flex-direction: column;
  box-sizing:border-box;
- border: 10px solid red;
  height: 100vh;
  width: 100vw;
 }
@@ -40,7 +39,7 @@ code {
     display:flex;
     box-sizing:border-box;
     flex-direction: column;
-    border: 10px solid green;
+    /* border: 10px solid green; */
     height: 100vh;
     width: 100vw;
 }
@@ -49,7 +48,7 @@ code {
   display:flex;
   flex-direction: column;
   box-sizing:border-box;
-  border: 10px solid pink;
+  border: 10px solid ;
   height: 100vh;
   width: 100vw;
 }
@@ -58,6 +57,7 @@ code {
   display:flex;
   box-sizing:border-box;
   border: 10px solid green;
+  background-color: #FF5151;
   justify-content: center;
   height: 15vh;
   width: 100vw;
@@ -88,6 +88,7 @@ code {
   flex-direction: column;
   box-sizing:border-box;
   border: 10px solid violet;
+  background-color: #FF5151;
   justify-content: center;
   align-items: center;
   height: 15vh;
@@ -97,69 +98,210 @@ code {
 .HomeBox{
   display:flex;
   box-sizing:border-box;
-  border: 10px solid green;
+  background-color: #FF5151;
+  flex-direction:column;
   justify-content: center;
   align-items: center;
   height: 80vh;
   width: 100vw;
 }
 
+
+.HomeBox h1{
+  display:flex;
+  box-sizing:border-box;
+  background-color: #FFFFFF;
+  flex-direction:column;
+  border: 10px solid #2838FF;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  border-radius: 15%;
+  width: 20vw;
+}
+
+.HomeBox img{
+  display:flex;
+  box-sizing:border-box;
+  border: 15px solid #2838FF;
+  border-radius: 15%;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  width: 30vw;
+}
+
 .loginlogout{
   display:flex;
   box-sizing:border-box;
-  border: 10px solid blue;
+  background-color: #FF5151;
   justify-content: center;
   align-items: center;
   height: 20vh;
   width: 100vw;
 }
 
-.loginYoTitle{
+.loginlogout .homelinkZZ{
+  display:flex;
+  box-sizing:border-box;
+  flex-direction: column;
+  border: 10px solid #2838FF;
+  background-color: #FFFFFF;
+  border-radius: 15%;
+  justify-content: center;
+  align-items: center;
+  height: 15vh;
+  width: 15vw;
+}
+
+.loginYoTitleSketch{
+  display:flex;
+  box-sizing:border-box;
+  background-color: #FF5151;
+  border: 10px solid #FF5151;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  width: 100vw;
+}
+
+
+.loginYo .loginYoTitleSketch img{
+  display:flex;
+  box-sizing:border-box;
+  background-color: #FFFFFF;
+  border: 10px solid #2838FF;
+  border-radius: 15%; 
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  width: 30vw;
+}
+
+
+.loginYo .loginYoTitleSketch h1{
+  display:flex;
+  box-sizing:border-box;
+  background-color: #FFFFFF;
+  border: 10px solid #2838FF;
+  border-radius: 15%;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  width: 20vw;
+
+}
+
+.loginYo{
+  display:flex;
+  box-sizing:border-box;
+  border: 10px solid #FF5151;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.loginYoTitleSketch img{
   display:flex;
   box-sizing:border-box;
   border: 10px solid blue;
   justify-content: center;
   align-items: center;
-  height: 70vh;
-  width: 100vw;
-
+  height: 60vh;
+  width: 30vw;
 }
 
 .loginYoForm{
   display:flex;
   flex-direction: column;
   box-sizing:border-box;
-  border: 10px solid blue;
+  background-color: #FF5151;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  width: 100vw;
+}
+
+.loginYoForm .formZ{
+  display:flex;
+  flex-direction: column;
+  box-sizing:border-box;
+  border: 10px solid #2838FF;
+  border-radius: 15%;
+  background-color: #FFFFFF;
+  justify-content: center;
+  align-items: center;
+  height: 15vh;
+  width: 20vw;
+}
+
+.loginYoForm .temporarylink{
+  display:flex;
+  flex-direction: column;
+  box-sizing:border-box;
+  border: 10px solid #2838FF;
+  border-radius: 15%;
+  background-color: #FFFFFF;
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+  width: 10vw;
+}
+
+
+.SignupTitle{
+  display:flex;
+  box-sizing:border-box;
+  background-color: #FF5151;
+
   justify-content: center;
   align-items: center;
   height: 30vh;
   width: 100vw;
 }
 
-.SignupTitle{
+.SignupTitle .title{
   display:flex;
   box-sizing:border-box;
-  border: 10px solid blue;
+  background-color: #FFFFFF;  
+  border: 10px solid #2838FF;
+  border-radius: 15%;
   justify-content: center;
   align-items: center;
-  height: 30vh;
-  width: 100vw;
+  height: 10vh;
+  width: 20vw;
 }
 
 .SignupFormContainer{
   display:flex;
   box-sizing:border-box;
-  border: 10px solid blue;
+  border: 10px solid #2838FF;
+  background-color: #C7FBF7;
   justify-content: center;
   align-items: center;
   height: 40vh;
   width: 100vw;
 }
 
+.SignupFormContainer .formZZ{
+  display:flex;
+  box-sizing:border-box;
+  border: 10px solid #2838FF;
+  border-radius:15%;
+  background-color: #FFFFFF;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  width: 30vw;
+}
+
 .SignupSpacingBox{
   display:flex;
   box-sizing:border-box;
-  border: 10px solid blue;
+  background-color: #FF5151;
+ 
   justify-content: center;
   align-items: center;
   height: 30vh;
