@@ -1,8 +1,6 @@
 # Project Title: 
     Fetch-A-Sketch
 
-## Fetch-A-Sketch
-
 # Project Owners: 
     1. Zachary Vallarino
         - GitHub userName - zvallarino
